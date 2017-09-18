@@ -1,6 +1,14 @@
-﻿body {
+﻿@font-face {
+    font-family: "NEXTART";
+    src: url(../fonts/NEXTART.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
+    font-family: "NEXTART", Arial;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +29,46 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.navbar {
+    background: #161a23;
+    min-height: 60px;
+}
+.nav>li>a{
+    color: #fff !important;
+}
+.nav > li > a:hover {
+    color: #f6a21c !important;
+}
+.menu-item-active{
+    color: #fff;
+    border-bottom: solid 3px #f6a21c;
+}
+footer {
+    background: #161a23;
+    min-height: 120px;
+    color: #fff !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+footer li{
+    display: block;
+}
+footer a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+footer a[href*="/"]:hover {
+    text-decoration: none;
+    color: #f6a21c;
+}
+footer a {
+    color: #fff;
+}
+footer>p{
+    margin: 0;
+}
+footer .container{
+    max-width: 768px;
 }
