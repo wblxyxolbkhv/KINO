@@ -10,7 +10,10 @@ namespace KINO.Models
     {
         [Key]
         public int LINK { get; set; }
-        //Значение
+        //Значение для сравнения
         public int Amout { get; set; }
+        //Значение для вывода 
+        public string Value { get; set; }
+    
     }
 }

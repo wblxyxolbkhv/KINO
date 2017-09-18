@@ -14,7 +14,7 @@ namespace KINO.Models
         //Название зала
         public string Name { get; set; }
         //Изображение
-        public Image Image { get; set; }
+        public string Image { get; set; }
         //Количество мест
         public int SeatsNumber { get; set; }
     }
