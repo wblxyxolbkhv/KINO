@@ -14,9 +14,9 @@ namespace KINO.Models
         //Название 
         public string Name { get; set; }
         //Постер
-        public Image Poster { get; set; }
+        public string Poster { get; set; }
         //Год выпуска
-        public DateTime ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; }
         //Страна
         public Country Country { get; set; }
         public int? CountryLINK { get; set; }

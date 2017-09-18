@@ -25,14 +25,6 @@ namespace KINO.Models
         {
         }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
-
-    public class FilmContext : DbContext
-    {
         public DbSet<Hall> Halls { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Director> Directors { get; set; }
@@ -40,6 +32,23 @@ namespace KINO.Models
         public DbSet<AgeLimit> AgeLimits { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Session> Sessions { get; set; }
-        public DbSet<Film> Films { get; set; } 
+        public DbSet<Film> Films { get; set; }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
     }
+
+    //public class FilmContext : DbContext
+    //{
+    //    public DbSet<Hall> Halls { get; set; }
+    //    public DbSet<Genre> Genres { get; set; }
+    //    public DbSet<Director> Directors { get; set; }
+    //    public DbSet<Country> Countries { get; set; }
+    //    public DbSet<AgeLimit> AgeLimits { get; set; }
+    //    public DbSet<Seat> Seats { get; set; }
+    //    public DbSet<Session> Sessions { get; set; }
+    //    public DbSet<Film> Films { get; set; } 
+    //}
 }
