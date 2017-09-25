@@ -4,5 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Halls</h2>
+<h2>Наши залы</h2>
+<div class="slideshow-main">
+    <div class="slide-arrow-left">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    </div>
+    @foreach (KINO.Models.Hall hall in ViewBag.Halls)
+    {
+        <div class="slide">
+            @{
+                string url = "http://localhost:50293/Content/Images/Halls/" + hall.Image;
+                <div class="slide-image" background-image=@url ></div>
+                string s = hall.SeatsNumber.ToString() + " мест";
+                <h3>@hall.Name</h3>
+                <p>@s</p>
+            }
+        </div>
+    }
+    <div class="slide-arrow-right">
+        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+    </div>
+</div>
 
