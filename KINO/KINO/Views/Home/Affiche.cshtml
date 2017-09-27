@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Афиша";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="container">
+    @foreach (KINO.Models.Film film in ViewBag.Films)
+    {
+        <div class="row">
+            @{
+                string url = "/Content/Images/Posters/" + film.Poster;
+                <div class="poster-image" style="background-image:url(@url)"></div>
+                <div class="film-info">
+                    @{
+                        string filmName = string.Format("{0} ({1})", film.Name, film.ReleaseYear);
+                        <h3>@film.Name </h3><br/>
+                        <strong>Жанр: </strong><span>@film.Genre.Name</span><br />
+                        <strong>Ограничение: </strong><span>@film.AgeLimit.Value</span><br />
+                    }
+                </div>
+
+            }
+        </div>
+                }
+</div>

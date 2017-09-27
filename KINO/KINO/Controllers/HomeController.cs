@@ -15,9 +15,16 @@ namespace KINO.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Affiche()
         {
 
+            IEnumerable<Film> films = db.Films;
+            foreach (Film film in films)
+            {
+                film.Genre = db.Genres.FirstOrDefault(genre => genre.LINK == film.GenreLINK);
+                film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
+            }
+            ViewBag.Films = films;
             return View();
         }
 

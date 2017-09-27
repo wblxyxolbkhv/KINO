@@ -42,7 +42,12 @@ textarea {
 .nav > li > a:hover {
     color: #f6a21c !important;
 }
-.menu-item-active{
+.navbar-brand {
+    background-image: url(/Content/Images/logo.png);
+    width: 208px;
+    height: 60px;
+}
+.menu-item-active {
     color: #fff;
     border-bottom: solid 3px #f6a21c;
 }
@@ -53,6 +58,7 @@ footer {
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0;
 }
 footer li{
     display: block;
@@ -80,7 +86,7 @@ footer .container{
 /*
     Слайдшоу
 */
-.slideshow-main{
+#slideshow{
     width: 100%;
     position: relative;
 }
@@ -94,14 +100,16 @@ footer .container{
     left: 50%;
     transform: translate(-50%, 0);
 }
-.slide h3{
-    font-size: 45px;
-    top: 30%;
-}
-.slide p{
-    font-size: 14px;
-    top: 50%;
-}
+    .slide h3 {
+        font-size: 45px;
+        top: 30%;
+        z-index: 102;
+    }
+    .slide p {
+        font-size: 14px;
+        top: 70%;
+        z-index: 102;
+    }
 .slide .slide-image{
      position: absolute;
      left: 0;
@@ -111,18 +119,45 @@ footer .container{
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
+     z-index: 100;
  }
-.slideshow-main .slide-arrow-left,
-.slideshow-main .slide-arrow-right {
+#slideshow .slide-arrow-left,
+#slideshow .slide-arrow-right {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
     font-size: 48px;
     cursor: pointer;
+    z-index: 102;
 }
-.slideshow-main .slide-arrow-left {
+#slideshow .slide-arrow-left {
     left: 0;
 }
-.slideshow-main .slide-arrow-right {
+#slideshow .slide-arrow-right {
     right: 0;
+}
+.slide-title-cover{
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 101;
+}
+.form-control {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.poster-image{
+    width: 200px;
+    height: 300px;
+    background-size: cover;
+    float: left;
+}
+.film-info{
+    float: left;
+    margin-left: 40px;
 }
