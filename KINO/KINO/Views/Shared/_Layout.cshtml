@@ -37,7 +37,9 @@
         </div>
     </div>
     <div class="container body-content">
-                @RenderBody()
+        <div class="content">
+            @RenderBody()
+        </div>
         <footer>
             <hr />
             <div class="container">
@@ -59,10 +61,10 @@
                     </div>
                 </div>
             </div>
-                <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>
-
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>

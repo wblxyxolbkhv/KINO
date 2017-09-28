@@ -27,7 +27,17 @@ namespace KINO.Controllers
             ViewBag.Films = films;
             return View();
         }
+        public ActionResult Film(int link)
+        {
+            Film film = db.Films.FirstOrDefault(f => f.LINK == link);
+            film.Genre = db.Genres.FirstOrDefault(genre => genre.LINK == film.GenreLINK);
+            film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
+            film.Director = db.Directors.FirstOrDefault(director => director.LINK == film.DirectorLINK);
+            film.Country = db.Countries.FirstOrDefault(country => country.LINK == film.CountryLINK);
+            ViewBag.Film = film;
 
+            return View();
+        }
         public ActionResult Contact()
         {
 
