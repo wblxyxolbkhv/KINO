@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Film.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Film.Name</h2>
+<div class="film-container container">
+    <div class="row">
+        <div class="col-lg-6">
+            @{ 
+                string image = "/Content/Images/Posters/" + ViewBag.Film.Poster;
+                <img src="@image"/>
+             }
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+    </div>
+</div>
+
