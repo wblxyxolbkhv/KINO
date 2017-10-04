@@ -694,3 +694,4 @@ D:\KINO\KINO\KINO\obj\Debug\KINO.csproj.GenerateResource.Cache
 D:\KINO\KINO\KINO\obj\Debug\KINO.csproj.CoreCompileInputs.cache
 D:\KINO\KINO\KINO\obj\Debug\KINO.dll
 D:\KINO\KINO\KINO\obj\Debug\KINO.pdb
+C:\Users\Дмитрий\Desktop\KINO\KINO\KINO\obj\Debug\KINO.Migrations._03102017.resources
