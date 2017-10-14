@@ -73,7 +73,7 @@ namespace KINO.Migrations
 
             //Seat seat = new Seat() { LINK = 1, IsBooked = false, Number = 10, Row = 1, SessionLINK = 1 };
             //context.Seats.Add(seat);
-
+            
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //

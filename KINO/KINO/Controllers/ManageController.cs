@@ -5,8 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using KINO.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace KINO.Controllers
 {
@@ -70,7 +73,7 @@ namespace KINO.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             return View(model);
         }
@@ -324,9 +327,42 @@ namespace KINO.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult ContentManage()
+        public ActionResult FilmContentManage()
         {
+            var context = ApplicationDbContext.Create();
+
+            SelectList genresList = new SelectList(context.Genres.ToList(), "LINK", "Name");
+            ViewBag.Genres = genresList;
+            SelectList directorsList = new SelectList(context.Directors.ToList(), "LINK", "Name");
+            ViewBag.Directors = directorsList;
+            SelectList countriesList = new SelectList(context.Countries.ToList(), "LINK", "Name");
+            ViewBag.Countries = countriesList;
+            SelectList ageLimitsList = new SelectList(context.AgeLimits.ToList(), "LINK", "Value");
+            ViewBag.AgeLimits = ageLimitsList;
+           /* SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
+            ViewBag.Films = filmsList;
+            SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
+            ViewBag.Halls = hallsList;*/
             return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult FilmContentManage(FilmContentManageViewModel model)
+        {
+            var context = ApplicationDbContext.Create();
+            if (model.Film != null)
+            {
+                model.Film.Poster = model.Film.Poster + ".jpg";
+                context.Entry(model.Film).State = EntityState.Added;
+            }
+            //if (model.Session != null)
+            // context.Entry(model.Session).State = EntityState.Added;
+            if (model.UploadedFile != null)
+                model.UploadedFile.SaveAs(Server.MapPath("~/Content/Images/Posters/" + model.Film.Poster + ".jpg"));
+            context.SaveChanges();
+            return RedirectToAction("Affiche","Home");
+            
         }
 
         protected override void Dispose(bool disposing)
