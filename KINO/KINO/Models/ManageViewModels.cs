@@ -85,11 +85,16 @@ namespace KINO.Models
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 
-    public class FilmContentManageViewModel
+    public class FilmManageViewModel
     {
         public Film Film { get; set; }
         public Session Session { get; set; }
 
         public HttpPostedFileBase UploadedFile { get; set; }
+    }
+
+    public class SessionManageViewModel
+    {
+        public Session Session { get; set; }
     }
 }

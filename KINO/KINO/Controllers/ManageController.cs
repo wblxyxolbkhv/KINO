@@ -327,9 +327,20 @@ namespace KINO.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult FilmContentManage()
+        public ActionResult FilmManage()
         {
             var context = ApplicationDbContext.Create();
+
+            string link = Request.Params["id"];
+            if (link != null)
+            {
+                int l = Int32.Parse(link);
+                var film = context.Films.Find(l);
+                if (film == null)
+                    return View("Error");
+
+                ViewBag.Film = film;
+            }
 
             SelectList genresList = new SelectList(context.Genres.ToList(), "LINK", "Name");
             ViewBag.Genres = genresList;
@@ -339,30 +350,85 @@ namespace KINO.Controllers
             ViewBag.Countries = countriesList;
             SelectList ageLimitsList = new SelectList(context.AgeLimits.ToList(), "LINK", "Value");
             ViewBag.AgeLimits = ageLimitsList;
-           /* SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
-            ViewBag.Films = filmsList;
-            SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
-            ViewBag.Halls = hallsList;*/
-            return View();
+
+            /* SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
+             ViewBag.Films = filmsList;
+             SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
+             ViewBag.Halls = hallsList;*/
+
+            FilmManageViewModel model = new FilmManageViewModel();
+            model.Film = ViewBag.Film;
+            return View(model);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult FilmContentManage(FilmContentManageViewModel model)
+        public ActionResult FilmManage(FilmManageViewModel model)
         {
             var context = ApplicationDbContext.Create();
+
             if (model.Film != null)
             {
-                model.Film.Poster = model.Film.Poster + ".jpg";
-                context.Entry(model.Film).State = EntityState.Added;
+                if (!model.Film.Poster.EndsWith(".jpg"))
+                    model.Film.Poster = model.Film.Poster + ".jpg";
+                if (context.Films.Find(model.Film.LINK) != null)
+                    context.Entry(model.Film).State = EntityState.Modified;
+                else
+                    context.Entry(model.Film).State = EntityState.Added;
             }
             //if (model.Session != null)
             // context.Entry(model.Session).State = EntityState.Added;
             if (model.UploadedFile != null)
-                model.UploadedFile.SaveAs(Server.MapPath("~/Content/Images/Posters/" + model.Film.Poster + ".jpg"));
+                model.UploadedFile.SaveAs(Server.MapPath("~/Content/Images/Posters/" + model.Film.Poster));
             context.SaveChanges();
             return RedirectToAction("Affiche","Home");
             
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult SessionManage()
+        {
+            var context = ApplicationDbContext.Create();
+
+            string link = Request.Params["id"];
+            if (link != null)
+            {
+                int l = Int32.Parse(link);
+                var session = context.Sessions.Find(l);
+                if (session == null)
+                    return View("Error");
+
+                ViewBag.Session = session;
+            }
+
+            SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
+            ViewBag.Films = filmsList;
+            SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
+            ViewBag.Halls = hallsList;
+
+            SessionManageViewModel model = new SessionManageViewModel();
+            model.Session = ViewBag.Session;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public ActionResult SessionManage(SessionManageViewModel model)
+        {
+            var context = ApplicationDbContext.Create();
+
+            if(model.Session != null)
+            {
+                if (context.Sessions.Find(model.Session.LINK) != null)
+                    context.Entry(model.Session).State = EntityState.Modified;
+                else
+                    context.Entry(model.Session).State = EntityState.Added;
+            }
+            context.SaveChanges();
+
+            return RedirectToAction("Affiche", "Home");
         }
 
         protected override void Dispose(bool disposing)

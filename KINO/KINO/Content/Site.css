@@ -185,3 +185,9 @@ footer .container{
     padding: 15px;
     border: 2px solid white;
 }
+
+
+.film-content-image {
+    width: 395px;
+    float:left;
+}

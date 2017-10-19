@@ -325,8 +325,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Halls.cshtml" />
-    <Content Include="Views\Manage\FilmContentManage.cshtml" />
+    <Content Include="Views\Manage\FilmManage.cshtml" />
     <Content Include="Views\Home\Film.cshtml" />
+    <Content Include="Views\Manage\SessionManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
