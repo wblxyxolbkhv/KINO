@@ -330,16 +330,14 @@ namespace KINO.Controllers
         public ActionResult FilmManage()
         {
             var context = ApplicationDbContext.Create();
-
+            Film film = null;
             string link = Request.Params["id"];
             if (link != null)
             {
                 int l = Int32.Parse(link);
-                var film = context.Films.Find(l);
+                film = context.Films.Find(l);
                 if (film == null)
                     return View("Error");
-
-                ViewBag.Film = film;
             }
 
             SelectList genresList = new SelectList(context.Genres.ToList(), "LINK", "Name");
@@ -357,7 +355,7 @@ namespace KINO.Controllers
              ViewBag.Halls = hallsList;*/
 
             FilmManageViewModel model = new FilmManageViewModel();
-            model.Film = ViewBag.Film;
+            model.Film = film;
             return View(model);
         }
 
@@ -390,16 +388,14 @@ namespace KINO.Controllers
         public ActionResult SessionManage()
         {
             var context = ApplicationDbContext.Create();
-
+            Session session = null;
             string link = Request.Params["id"];
             if (link != null)
             {
                 int l = Int32.Parse(link);
-                var session = context.Sessions.Find(l);
+                session = context.Sessions.Find(l);
                 if (session == null)
                     return View("Error");
-
-                ViewBag.Session = session;
             }
 
             SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
@@ -408,7 +404,7 @@ namespace KINO.Controllers
             ViewBag.Halls = hallsList;
 
             SessionManageViewModel model = new SessionManageViewModel();
-            model.Session = ViewBag.Session;
+            model.Session = session;
 
             return View(model);
         }
@@ -431,6 +427,28 @@ namespace KINO.Controllers
             return RedirectToAction("Affiche", "Home");
         }
 
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> DeleteFilm(int? id)
+        {
+            var context = ApplicationDbContext.Create();
+
+            if (id == null)
+            {
+                return View("Error");
+            }
+
+            Film film = await context.Films.FindAsync(id);
+
+            if(film == null)
+            {
+                return View("Error");
+            }
+
+            context.Films.Remove(film);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Affiche", "Home");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

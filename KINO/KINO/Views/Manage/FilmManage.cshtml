@@ -15,57 +15,57 @@
         <div class="row">
             <div class="col-md-6" style="float:left;">
             <div class="form-group">
-            @Html.LabelFor(m => m.Film.Name, "Название", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.Name, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.TextBoxFor(m => m.Film.Name, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.DirectorLINK, "Режиссер", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.DirectorLINK, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.DropDownListFor(m => m.Film.DirectorLINK, ViewBag.Directors as SelectList, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.GenreLINK, "Жанр", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.GenreLINK, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.DropDownListFor(m => m.Film.GenreLINK, ViewBag.Genres as SelectList, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.ReleaseYear, "Год выхода на экран", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.ReleaseYear, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.TextBoxFor(m => m.Film.ReleaseYear, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.AgeLimitLINK, "Возрастное ограничение", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.AgeLimitLINK, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.DropDownListFor(m => m.Film.AgeLimitLINK, ViewBag.AgeLimits as SelectList, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.CountryLINK, "Страна производитель", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.CountryLINK, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.DropDownListFor(m => m.Film.CountryLINK, ViewBag.Countries as SelectList, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.Duration, "Длительность (в минутах)", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.Duration, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.TextBoxFor(m => m.Film.Duration, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Film.Poster, "Название файла-постера", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.Film.Poster, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
                 @Html.EditorFor(m => m.Film.Poster, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.UploadedFile, "Файл изображения", new { @class = "col-md-4 control-label" })
+            @Html.LabelFor(m => m.UploadedFile, new { @class = "col-md-4 control-label" })
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.UploadedFile, new { type = "file" })
+                @Html.TextBoxFor(m => m.UploadedFile, new { type = "file", onchange = "SetNewEntry(this.files);" })
             </div>
         </div>
         <div class="form-group">
@@ -81,15 +81,18 @@
             </div>
         </div>
                 </div>
-            @if (ViewBag.Film != null)
-             {
-                <div class="col-md-5">
+            
+         <div class="col-md-5">
                     @{
-                        string image = "/Content/Images/Posters/" + ViewBag.Film.Poster;
-                        <img class="film-content-image" src="@image" />
-                    }
-               </div>
-             }
+                        string image = "";
+                        if (Model.Film != null)
+                        {
+                            image = "/Content/Images/Posters/" + Model.Film.Poster;
+                        }
+                        <img id="filmimage" class="film-content-image" src="@image" />
+
+                        }
+          </div>
       </div>
   </div>
     }

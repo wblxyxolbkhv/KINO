@@ -90,6 +90,7 @@ namespace KINO.Models
         public Film Film { get; set; }
         public Session Session { get; set; }
 
+        [Display(Name = "Файл изображения")]
         public HttpPostedFileBase UploadedFile { get; set; }
     }
 
