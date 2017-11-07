@@ -185,3 +185,51 @@ footer .container{
     padding: 15px;
     border: 2px solid white;
 }
+
+.poster-image-large{
+    width: 100%;
+    min-height: 500px;
+    background-size: cover;
+}
+
+.session-button {
+    color: white;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #f6a21c;
+    border-radius: 50px;
+    background: #f6a21c;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    margin-right: 15px;
+}
+.seat-set{
+    display: table;
+    border-spacing: 5px;
+}
+.seat-row{
+    display: table-row;
+}
+.seat {
+    display: table-cell;
+    width: 30px;
+    height: 40px;
+    background: #161a23;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 7px;
+}
+.seat:hover {
+    background: #f6a21c;
+}
+.booked {
+    background: #c1c1d0 !important;
+}
+.booked:hover {
+    background: #c1c1d0 !important;
+}
+.seat-active {
+    background: #f6a21c !important;
+}

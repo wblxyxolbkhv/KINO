@@ -4,18 +4,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Film.Name</h2>
-<div class="film-container container">
-    <div class="row">
-        <div class="col-lg-6">
-            @{ 
-                string image = "/Content/Images/Posters/" + ViewBag.Film.Poster;
-                <img src="@image"/>
-             }
+<div class="content">
+    <div class="film-container container">
+        <div class="row">
+            <div class="col-lg-4" style="float: left;">
+                @{ 
+                    string image = "/Content/Images/Posters/" + ViewBag.Film.Poster;
+                    <div class="poster-image-large" style="background-image:url(@image);">
+                        </div>
+                 }
+            </div>
+            <div class="col-lg-8" style="float: left;">
+                <h2>@ViewBag.Film.Name</h2>
+                <p>Год: @ViewBag.Film.ReleaseYear</p>
+                <p>Длительность: @ViewBag.Film.Duration</p>
+                <p>Страна: @ViewBag.Film.Country.Name</p>
+                <p>Жанр: @ViewBag.Film.Genre.Name</p>
+                <p>Режиссер: @ViewBag.Film.Director.Name  @ViewBag.Film.Director.Surname</p>
+                <p>Ограничения: @ViewBag.Film.AgeLimit.Value</p>
+            </div>
         </div>
-        <div class="col-lg-6">
+        @{
+            List<List<KINO.Models.Session>> sessionSortedByDate = new List<List<KINO.Models.Session>>();
+            foreach (KINO.Models.Session s in ViewBag.Sessions)
+            {
+                bool added = false;
+                foreach (List<KINO.Models.Session> list in sessionSortedByDate)
+                {
+                    if (list.Count > 0 && list[0].SessionTime.ToShortDateString() == s.SessionTime.ToShortDateString())
+                    {
+                        list.Add(s);
+                        added = true;
+                        continue;
+                    }
 
-        </div>
+                }
+                if (!added)
+                {
+                    List<KINO.Models.Session> newList = new List<KINO.Models.Session>();
+                    newList.Add(s);
+                    sessionSortedByDate.Add(newList);
+                }
+            }
+            foreach (List<KINO.Models.Session> list in sessionSortedByDate)
+            {
+                if (list.Count > 0)
+                {
+                    <h3>@list[0].SessionTime.ToShortDateString() (@list[0].SessionTime.DayOfWeek.ToString())</h3>
+                    <div class="row">
+                        @{ 
+                            list.Sort(new KINO.Models.SessionComparer());
+                            foreach (KINO.Models.Session s in list)
+                            {
+                                <a href="/Home/Sessions?link=@s.LINK"><div class="session-button">@s.SessionTime.ToShortTimeString()<br/>Зал: @s.Hall.Name</div></a>
+                            }
+                        }
+                    </div>
+                }
+            }
+        }
     </div>
 </div>
 

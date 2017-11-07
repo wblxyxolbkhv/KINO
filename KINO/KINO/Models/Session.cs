@@ -6,6 +6,7 @@ using System.Web;
 
 namespace KINO.Models
 {
+    public delegate bool seatFindDelegate(Seat s);
     public class Session
     {
         [Key]
@@ -19,5 +20,13 @@ namespace KINO.Models
         public Hall Hall { get; set; }
         public int? HallLINK { get; set; }
 
+        public IEnumerable<Seat> Seats { get; set; }
+    }
+    public class SessionComparer : Comparer<KINO.Models.Session>
+    {
+        public override int Compare(Session x, Session y)
+        {
+            return x.SessionTime.CompareTo(y);
+        }
     }
 }

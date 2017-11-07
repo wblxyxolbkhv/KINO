@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Session";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Заказ билета</h2>
+
+<p>Фильм: @ViewBag.Session.Film.Name</p>
+<p>Зал: @ViewBag.Session.Hall.Name</p>
+<p>Дата: @ViewBag.Session.SessionTime.ToShortDateString()</p>
+<p>Время: @ViewBag.Session.SessionTime.ToShortTimeString()</p>
+
+@{ 
+    List<KINO.Models.Seat> seats = ViewBag.Session.Seats;
+    int rowCount = (int)Math.Sqrt(ViewBag.Session.Hall.SeatsNumber / 4);
+    <div class="seat-set">
+    @for (int i = 0; i< rowCount; i++)
+    {
+        <div class="seat-row">
+        @for (int j = 0; j < rowCount * rowCount; j++)
+        {
+            KINO.Models.Seat seat = null;
+            try
+            {
+                seat = seats.FirstOrDefault(s => s.Row == i+1 && s.Number == j+1);
+            }
+            catch
+            {
+
+            }
+            if (seat != null && seat.IsBooked)
+            {
+                <div class="seat booked"></div>
+            }
+            else
+            {
+                <div class="seat" row="@i" number="@j"></div>
+
+            }
+        }
+        </div>
+    }
+    </div>
+    <div class="finalize-block">
+        <div class="new-booked-seat">
+
+        </div>
+        <form action="/Home/CreateUser" method="post">
+            <input type="submit">
+        </form>
+</div>
+}
+
