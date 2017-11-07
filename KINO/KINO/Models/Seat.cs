@@ -16,9 +16,9 @@ namespace KINO.Models
         public int Number { get; set; }
         //Статус брони
         public bool IsBooked { get; set; }
-        // Ссылка на клиента ??
-        public ApplicationUser ApplicationUser { get; set; }
-        public string ApplicationUserId { get; set; }
+        //Ссылка на заказ
+        public Order Order { get; set; }
+        public int? OrderLINK { get; set; }
         // Сеанс
         public Session Session { get; set; }
         public int? SessionLINK { get; set; }

@@ -7,15 +7,10 @@
 }
 document.addEventListener("DOMContentLoaded", setMenuItemActive);
 
-var seats = []
-function addClickHandlers() {
-    jQuery(".seat").click(function () {
-        jQuery(this).addClass("seat-active");
-        var row = jQuery(this).attr("row");
-        var number = jQuery(this).attr("number");
-
-        jQuery(".finalize-block").
-    });
+function SetNewEntry(files) {
+    var img = document.getElementById('filmimage');
+    img.src = window.URL.createObjectURL(files[0]);
+    //img.onload = function () {
+        //window.URL.revokeObjectURL(this.src);
+    //}
 }
-document.addEventListener("DOMContentLoaded", addClickHandlers);
-

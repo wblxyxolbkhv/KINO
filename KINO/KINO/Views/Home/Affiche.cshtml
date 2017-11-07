@@ -5,23 +5,39 @@
 <h3>@ViewBag.Message</h3>
 
 <div class="container">
+    @if (@HttpContext.Current.User.IsInRole("Admin"))
+    {   
+          <div class="row">
+           <p><a class="btn btn-default col-md-2 col-md-offset-10" href="/Manage/FilmManage">Добавить фильм</a></p>
+        </div>
+        
+    }
     @foreach (KINO.Models.Film film in ViewBag.Films)
     {
         <div class="row film">
             @{
                 string url = "/Content/Images/Posters/" + film.Poster;
                 <div class="poster-image" style="background-image:url(@url)"></div>
-                <div class="film-info">
+                <div class="film-info col-md-6">
                     @{
                         string filmName = string.Format("{0} ({1})", film.Name, film.ReleaseYear);
-                        string href = string.Format("/Home/Film?link={0}", film.LINK);
+                        string href = string.Format("/Home/Film?id={0}", film.LINK);
                         <h3><a href="@href">@filmName</a></h3>
                         <strong>Жанр: </strong><span>@film.Genre.Name</span><br />
                         <strong>Ограничение: </strong><span>@film.AgeLimit.Value</span><br />
                     }
                 </div>
-
+                        if (@HttpContext.Current.User.IsInRole("Admin"))
+                        {
+                            
+                            string hrefEdit = string.Format("/Manage/FilmManage?id={0}", film.LINK);
+                            string hrefDelete = string.Format("/Manage/DeleteFilm?id={0}", film.LINK);
+                            <div class="col-md-2">
+                                <p><a class="btn btn-default" href="@hrefEdit">Редактировать фильм</a></p>
+                                <p><a class="btn btn-default" href="@hrefDelete">Удалить фильм</a></p>
+                            </div>
+                        }
             }
         </div>
-                }
+                        }
 </div>

@@ -23,6 +23,7 @@ namespace KINO.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public DbSet<Hall> Halls { get; set; }

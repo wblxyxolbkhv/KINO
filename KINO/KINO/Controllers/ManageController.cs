@@ -5,8 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using KINO.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace KINO.Controllers
 {
@@ -70,7 +73,7 @@ namespace KINO.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             return View(model);
         }
@@ -324,11 +327,128 @@ namespace KINO.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult ContentManage()
+        public ActionResult FilmManage()
         {
-            return View();
+            var context = ApplicationDbContext.Create();
+            Film film = null;
+            string link = Request.Params["id"];
+            if (link != null)
+            {
+                int l = Int32.Parse(link);
+                film = context.Films.Find(l);
+                if (film == null)
+                    return View("Error");
+            }
+
+            SelectList genresList = new SelectList(context.Genres.ToList(), "LINK", "Name");
+            ViewBag.Genres = genresList;
+            SelectList directorsList = new SelectList(context.Directors.ToList(), "LINK", "Name");
+            ViewBag.Directors = directorsList;
+            SelectList countriesList = new SelectList(context.Countries.ToList(), "LINK", "Name");
+            ViewBag.Countries = countriesList;
+            SelectList ageLimitsList = new SelectList(context.AgeLimits.ToList(), "LINK", "Value");
+            ViewBag.AgeLimits = ageLimitsList;
+
+            /* SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
+             ViewBag.Films = filmsList;
+             SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
+             ViewBag.Halls = hallsList;*/
+
+            FilmManageViewModel model = new FilmManageViewModel();
+            model.Film = film;
+            return View(model);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult FilmManage(FilmManageViewModel model)
+        {
+            var context = ApplicationDbContext.Create();
+
+            if (model.Film != null)
+            {
+                if (!model.Film.Poster.EndsWith(".jpg"))
+                    model.Film.Poster = model.Film.Poster + ".jpg";
+                if (context.Films.Find(model.Film.LINK) != null)
+                    context.Entry(model.Film).State = EntityState.Modified;
+                else
+                    context.Entry(model.Film).State = EntityState.Added;
+            }
+            //if (model.Session != null)
+            // context.Entry(model.Session).State = EntityState.Added;
+            if (model.UploadedFile != null)
+                model.UploadedFile.SaveAs(Server.MapPath("~/Content/Images/Posters/" + model.Film.Poster));
+            context.SaveChanges();
+            return RedirectToAction("Affiche","Home");
+            
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult SessionManage()
+        {
+            var context = ApplicationDbContext.Create();
+            Session session = null;
+            string link = Request.Params["id"];
+            if (link != null)
+            {
+                int l = Int32.Parse(link);
+                session = context.Sessions.Find(l);
+                if (session == null)
+                    return View("Error");
+            }
+
+            SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
+            ViewBag.Films = filmsList;
+            SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
+            ViewBag.Halls = hallsList;
+
+            SessionManageViewModel model = new SessionManageViewModel();
+            model.Session = session;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public ActionResult SessionManage(SessionManageViewModel model)
+        {
+            var context = ApplicationDbContext.Create();
+
+            if(model.Session != null)
+            {
+                if (context.Sessions.Find(model.Session.LINK) != null)
+                    context.Entry(model.Session).State = EntityState.Modified;
+                else
+                    context.Entry(model.Session).State = EntityState.Added;
+            }
+            context.SaveChanges();
+
+            return RedirectToAction("Affiche", "Home");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> DeleteFilm(int? id)
+        {
+            var context = ApplicationDbContext.Create();
+
+            if (id == null)
+            {
+                return View("Error");
+            }
+
+            Film film = await context.Films.FindAsync(id);
+
+            if(film == null)
+            {
+                return View("Error");
+            }
+
+            context.Films.Remove(film);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Affiche", "Home");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

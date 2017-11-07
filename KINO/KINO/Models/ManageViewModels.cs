@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Web;
 
 namespace KINO.Models
 {
@@ -82,5 +83,19 @@ namespace KINO.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    public class FilmManageViewModel
+    {
+        public Film Film { get; set; }
+        public Session Session { get; set; }
+
+        [Display(Name = "Файл изображения")]
+        public HttpPostedFileBase UploadedFile { get; set; }
+    }
+
+    public class SessionManageViewModel
+    {
+        public Session Session { get; set; }
     }
 }

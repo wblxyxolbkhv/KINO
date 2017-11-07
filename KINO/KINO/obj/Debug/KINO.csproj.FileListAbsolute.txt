@@ -695,4 +695,287 @@ D:\KINO\KINO\KINO\obj\Debug\KINO.csproj.CoreCompileInputs.cache
 D:\KINO\KINO\KINO\obj\Debug\KINO.dll
 D:\KINO\KINO\KINO\obj\Debug\KINO.pdb
 C:\Users\Дмитрий\Desktop\KINO\KINO\KINO\obj\Debug\KINO.Migrations._03102017.resources
-C:\Users\anikitenko\Desktop\Projects\IWeb\KINO\KINO\KINO\obj\Debug\KINO.Migrations._03102017.resources
+D:\KINO\KINO\KINO\obj\Debug\KINO.Migrations._03102017.resources
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ApplicationInsights.config
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\csc.exe
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\csc.exe.config
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\csc.rsp
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\csi.exe
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\csi.exe.config
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\csi.rsp
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.CSharp.Core.targets
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.VisualBasic.Core.targets
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\Microsoft.Win32.Primitives.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.AppContext.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Collections.Immutable.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Console.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Diagnostics.Process.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Diagnostics.StackTrace.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.IO.Compression.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.IO.FileSystem.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.IO.FileSystem.Primitives.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.IO.Pipes.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Reflection.Metadata.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.AccessControl.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.Claims.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.Encoding.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.Primitives.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Security.Principal.Windows.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Text.Encoding.CodePages.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Threading.Thread.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.ValueTuple.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Xml.ReaderWriter.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Xml.XmlDocument.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Xml.XPath.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\System.Xml.XPath.XDocument.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\vbc.exe
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\vbc.exe.config
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\vbc.rsp
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\VBCSCompiler.exe
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\roslyn\VBCSCompiler.exe.config
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\KINO.dll.config
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\KINO.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\KINO.pdb
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Antlr3.Runtime.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\EntityFramework.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\EntityFramework.SqlServer.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.Agent.Intercept.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.DependencyCollector.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.PerfCounterCollector.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.ServerTelemetryChannel.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.Web.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.WindowsServer.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.ApplicationInsights.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Core.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Owin.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Host.SystemWeb.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Cookies.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Facebook.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Google.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.OAuth.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Twitter.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Web.Infrastructure.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Newtonsoft.Json.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Owin.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Helpers.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Mvc.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Optimization.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Razor.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.WebPages.Deployment.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.WebPages.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.WebPages.Razor.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\WebGrease.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Helpers.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Mvc.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Optimization.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.Razor.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.WebPages.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.WebPages.Deployment.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\System.Web.WebPages.Razor.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Antlr3.Runtime.pdb
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Newtonsoft.Json.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\EntityFramework.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\EntityFramework.SqlServer.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Core.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Owin.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Host.SystemWeb.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Facebook.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Cookies.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.OAuth.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Google.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Twitter.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.ApplicationInsights.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.DependencyCollector.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.ServerTelemetryChannel.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.WindowsServer.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\Microsoft.AI.Web.xml
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.Helpers.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.Mvc.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.Optimization.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.Razor.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.WebPages.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.WebPages.Deployment.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\System.Web.WebPages.Razor.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\EntityFramework.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\EntityFramework.SqlServer.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.AspNet.Identity.Core.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.AspNet.Identity.Owin.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Host.SystemWeb.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.Facebook.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.Google.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.csprojResolveAssemblyReference.cache
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.Migrations.MigrateDB.resources
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.Migrations._03102017.resources
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.csproj.GenerateResource.Cache
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.csproj.CoreCompileInputs.cache
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.dll
+L:\НАЙДИ ЛЕХУ\KINO\KINO\KINO\obj\Debug\KINO.pdb
+D:\23.10.2017\KINO\KINO\KINO\bin\ApplicationInsights.config
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\csc.exe
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\csc.exe.config
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\csc.rsp
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\csi.exe
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\csi.exe.config
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\csi.rsp
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.AppContext.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Collections.Immutable.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Console.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Diagnostics.Process.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.IO.Compression.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.IO.FileSystem.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.IO.Pipes.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Reflection.Metadata.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.AccessControl.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.Claims.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Security.Principal.Windows.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Threading.Thread.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.ValueTuple.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Xml.XmlDocument.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Xml.XPath.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\vbc.exe
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\vbc.exe.config
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\vbc.rsp
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\VBCSCompiler.exe
+D:\23.10.2017\KINO\KINO\KINO\bin\roslyn\VBCSCompiler.exe.config
+D:\23.10.2017\KINO\KINO\KINO\bin\KINO.dll.config
+D:\23.10.2017\KINO\KINO\KINO\bin\KINO.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\KINO.pdb
+D:\23.10.2017\KINO\KINO\KINO\bin\Antlr3.Runtime.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\EntityFramework.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\EntityFramework.SqlServer.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.Agent.Intercept.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.DependencyCollector.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.Web.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.WindowsServer.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.ApplicationInsights.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Core.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Cookies.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Facebook.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Google.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.OAuth.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Twitter.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Web.Infrastructure.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Newtonsoft.Json.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Owin.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Helpers.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Mvc.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Optimization.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Razor.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.WebPages.Deployment.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.WebPages.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.WebPages.Razor.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\WebGrease.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Helpers.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Mvc.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Optimization.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.Razor.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.WebPages.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.WebPages.Deployment.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\System.Web.WebPages.Razor.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Antlr3.Runtime.pdb
+D:\23.10.2017\KINO\KINO\KINO\bin\Newtonsoft.Json.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\EntityFramework.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\EntityFramework.SqlServer.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Core.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Facebook.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Cookies.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.OAuth.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Google.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.Twitter.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.ApplicationInsights.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.DependencyCollector.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.WindowsServer.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\Microsoft.AI.Web.xml
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.Helpers.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.Mvc.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.Optimization.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.Razor.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.WebPages.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.WebPages.Deployment.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\System.Web.WebPages.Razor.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\EntityFramework.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\EntityFramework.SqlServer.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.AspNet.Identity.Core.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.AspNet.Identity.Owin.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Host.SystemWeb.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.Facebook.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.Google.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.csprojResolveAssemblyReference.cache
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.Migrations.MigrateDB.resources
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.Migrations._03102017.resources
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.csproj.GenerateResource.Cache
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.csproj.CoreCompileInputs.cache
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.dll
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.pdb
+D:\23.10.2017\KINO\KINO\KINO\obj\Debug\KINO.Migrations._07112017.resources

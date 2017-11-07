@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201710031009509_03102017.Designer.cs">
       <DependentUpon>201710031009509_03102017.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711070221053_07112017.cs" />
+    <Compile Include="Migrations\201711070221053_07112017.Designer.cs">
+      <DependentUpon>201711070221053_07112017.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgeLimit.cs" />
@@ -213,6 +217,7 @@
     <Compile Include="Models\Hall.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -325,9 +330,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Halls.cshtml" />
-    <Content Include="Views\Manage\ContentManage.cshtml" />
+    <Content Include="Views\Manage\FilmManage.cshtml" />
     <Content Include="Views\Home\Film.cshtml" />
-    <Content Include="Views\Home\Sessions.cshtml" />
+    <Content Include="Views\Manage\SessionManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -348,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710031009509_03102017.resx">
       <DependentUpon>201710031009509_03102017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711070221053_07112017.resx">
+      <DependentUpon>201711070221053_07112017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

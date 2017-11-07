@@ -18,18 +18,18 @@ namespace KINO.Migrations
 
         protected override void Seed(KINO.Models.ApplicationDbContext context)
         {
-            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+            //var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            var role1 = new IdentityRole { Name = "Admin" };
-            var role2 = new IdentityRole { Name = "User" };
+            //var role1 = new IdentityRole { Name = "Admin" };
+            //var role2 = new IdentityRole { Name = "User" };
 
-            roleManager.Create(role1);
-            roleManager.Create(role2);
+            //roleManager.Create(role1);
+            //roleManager.Create(role2);
 
-            userManager.AddToRole("774a465e-2684-49e5-a03f-901eded3852e", role1.Name);
-            userManager.AddToRole("774a465e-2684-49e5-a03f-901eded3852e", role2.Name);
+            //userManager.AddToRole("774a465e-2684-49e5-a03f-901eded3852e", role1.Name);
+            //userManager.AddToRole("774a465e-2684-49e5-a03f-901eded3852e", role2.Name);
             
             //  This method will be called after migrating to the latest version.
             //Hall smallHall = new Hall() { LINK = 1, Name = "Малый зал", SeatsNumber = 50 };
@@ -73,7 +73,7 @@ namespace KINO.Migrations
 
             //Seat seat = new Seat() { LINK = 1, IsBooked = false, Number = 10, Row = 1, SessionLINK = 1 };
             //context.Seats.Add(seat);
-
+            
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
