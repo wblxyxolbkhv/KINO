@@ -333,6 +333,7 @@
     <Content Include="Views\Manage\FilmManage.cshtml" />
     <Content Include="Views\Home\Film.cshtml" />
     <Content Include="Views\Manage\SessionManage.cshtml" />
+    <Content Include="Views\Home\Sessions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -56,7 +56,7 @@
                             list.Sort(new KINO.Models.SessionComparer());
                             foreach (KINO.Models.Session s in list)
                             {
-                                <a href="/Home/Sessions?link=@s.LINK"><div class="session-button">@s.SessionTime.ToShortTimeString()<br/>Зал: @s.Hall.Name</div></a>
+                                <a href="/Home/Sessions?id=@s.LINK" class="session-link"><div class="session-button">@s.SessionTime.ToShortTimeString()<br/>Зал: @s.Hall.Name</div></a>
                             }
                         }
                     </div>

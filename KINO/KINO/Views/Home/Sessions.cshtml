@@ -14,6 +14,7 @@
 @{ 
     List<KINO.Models.Seat> seats = ViewBag.Session.Seats;
     int rowCount = (int)Math.Sqrt(ViewBag.Session.Hall.SeatsNumber / 4);
+    <div class="sesion-cost">@ViewBag.Session.</div>
     <div class="seat-set">
     @for (int i = 0; i< rowCount; i++)
     {
@@ -35,7 +36,7 @@
             }
             else
             {
-                <div class="seat" row="@i" number="@j"></div>
+                <div class="seat" row="@(i+1)" number="@(j+1)"></div>
 
             }
         }
@@ -47,7 +48,7 @@
 
         </div>
         <form action="/Home/CreateUser" method="post">
-            <input type="submit">
+            <input type="submit" class="btn btn-default make-order-button" value="Заказать">
         </form>
 </div>
 }

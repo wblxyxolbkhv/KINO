@@ -14,3 +14,28 @@ function SetNewEntry(files) {
         //window.URL.revokeObjectURL(this.src);
     //}
 }
+
+
+
+
+
+function setSeatsClickable() {
+    jQuery(".seat").click(function () {
+        var element = jQuery(this);
+        if (!element.hasClass("booked")) {
+            if (!element.hasClass("active-seat")) {
+                element.addClass("active-seat");
+                var row = element.attr("row");
+                var number = element.attr("number");
+                onClickSeat(row, number);
+            }
+            else {
+                element.removeClass("active-seat");
+            }
+        }
+    });
+}
+function onClickSeat(row, number) {
+    jQuery("make-order-button").insertBefore("<div id='ticket-row"+row+"-number"+number+"'></div>");
+}
+document.addEventListener("DOMContentLoaded", setSeatsClickable);
