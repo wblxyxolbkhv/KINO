@@ -34,6 +34,7 @@ namespace KINO.Models
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Film> Films { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public static ApplicationDbContext Create()
         {

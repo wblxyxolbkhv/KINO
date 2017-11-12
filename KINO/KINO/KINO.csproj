@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201711070221053_07112017.Designer.cs">
       <DependentUpon>201711070221053_07112017.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711090349504_091120171349.cs" />
+    <Compile Include="Migrations\201711090349504_091120171349.Designer.cs">
+      <DependentUpon>201711090349504_091120171349.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgeLimit.cs" />
@@ -334,6 +338,9 @@
     <Content Include="Views\Home\Film.cshtml" />
     <Content Include="Views\Manage\SessionManage.cshtml" />
     <Content Include="Views\Home\Sessions.cshtml" />
+    <Content Include="Views\Home\CreateOrder.cshtml" />
+    <Content Include="Views\Home\HallsSlideshow.cshtml" />
+    <Content Include="Views\Home\FeaturedFilms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -357,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711070221053_07112017.resx">
       <DependentUpon>201711070221053_07112017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711090349504_091120171349.resx">
+      <DependentUpon>201711090349504_091120171349.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

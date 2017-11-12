@@ -242,4 +242,16 @@ footer .container{
 .active-seat {
     background: #f6a21c;
 }
-
+.ticket{
+    text-align: center;
+    height: 130px;
+    width: 100px;
+    border: 10px solid #fff;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.make-order-button{
+    display: block;
+    clear: both;
+}

@@ -105,6 +105,7 @@ namespace KINO.Migrations
                         FilmLINK = c.Int(),
                         SessionTime = c.DateTime(nullable: false),
                         HallLINK = c.Int(),
+                        Cost = c.Int(),
                     })
                 .PrimaryKey(t => t.LINK)
                 .ForeignKey("dbo.Films", t => t.FilmLINK)

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KINO.Models;
+using Microsoft.AspNet.Identity;
 
 namespace KINO.Controllers
 {
@@ -12,6 +14,11 @@ namespace KINO.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
+            IEnumerable<Hall> halls = db.Halls;
+            ViewBag.Halls = halls;
+
+            IEnumerable<Film> films = db.Films;
+            ViewBag.Films = films;
             return View();
         }
 
@@ -49,7 +56,6 @@ namespace KINO.Controllers
 
             return View();
         }
-
         public ActionResult Halls()
         {
             IEnumerable<Hall> halls = db.Halls;
@@ -57,6 +63,7 @@ namespace KINO.Controllers
 
             return View();
         }
+        [Authorize]
         public ActionResult Sessions(int id = -1)
         {
             try
@@ -74,6 +81,68 @@ namespace KINO.Controllers
                 return View("Error");
             }
             return View();
+        }
+        [HttpPost]
+        public ActionResult CreateOrder()
+        {
+            Order order = new Order();
+            string validationKey = GetRandomKey();
+            while (db.Orders.Where(o => o.ValidationKey == validationKey).Count() > 0)
+            {
+                validationKey = GetRandomKey();
+            }
+            NameValueCollection form = Request.Form;
+            int cost = Convert.ToInt32(form.Get("session-cost"));
+            cost *= form.Count - 2;
+            string applicationUserId = User.Identity.GetUserId();
+
+            order.ValidationKey = validationKey;
+            order.ApplicationUserId = applicationUserId;
+            order.Cost = cost;
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+
+            int sessionLink = Convert.ToInt32(form.Get("session-link"));
+
+            for (int i = 0;i<form.Count; i++)
+            {
+                if (form.GetKey(i) != "session-cost" && form.GetKey(i) != "session-link")
+                {
+                    Seat newSeat = new Seat();
+                    int value = Convert.ToInt32(form.Get(i));
+                    int row = value / 1000;
+                    int number = value % 1000;
+
+                    newSeat.Row = row;
+                    newSeat.Number = number;
+                    newSeat.IsBooked = true;
+                    newSeat.OrderLINK = order.LINK;
+                    newSeat.SessionLINK = sessionLink;
+
+                    db.Seats.Add(newSeat);
+                    db.SaveChanges();
+                }
+            }
+
+            ViewBag.ValidationKey = validationKey;
+            return View();
+        }
+
+
+
+        Random rnd = new Random();
+        private string GetRandomKey()
+        {
+            string key = "";
+            string chars = "0123456789-QWERTYUIOPASDFGHJKLZXCVBNM";
+            for (int i = 0; i < 6; i++)
+            {
+                int j = rnd.Next(0, chars.Length - 1);
+                key += chars[j];
+            }
+            return key;
         }
     }
 }

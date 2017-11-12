@@ -25,6 +25,7 @@ namespace KINO.Models
         public int? HallLINK { get; set; }
 
         public IEnumerable<Seat> Seats { get; set; }
+        public int Cost { get; set; }
     }
     public class SessionComparer : Comparer<KINO.Models.Session>
     {

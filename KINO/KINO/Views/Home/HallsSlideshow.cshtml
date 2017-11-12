@@ -1,0 +1,26 @@
+﻿@model IEnumerable<KINO.Models.Hall>
+
+<div id="slideshow">
+    <div class="slide-arrow-left" onclick="SlideDown();">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    </div>
+    @foreach (KINO.Models.Hall hall in Model)
+    {
+        <div class="slide">
+            @{
+                string url = "/Content/Images/Halls/" + hall.Image;
+                <div class="slide-image" style="background-image:url(@url)"></div>
+                string s = hall.SeatsNumber.ToString() + " мест";
+                <div class="slide-title-cover">
+                    <h3>@hall.Name</h3>
+                    <p>@s</p>
+                </div>
+
+            }
+        </div>
+                }
+    <div class="slide-arrow-right" onclick="SlideUp();">
+        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+    </div>
+</div>
+

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<KINO.Models.Film>
+@{ 
+    List<KINO.Models.Film> films = Model.ToList();
+}
+<div class="container">
+    <div class="row">
+        @for (int i = 0; i < 3; i++)
+        {
+            <a href="/Home/Film?id=@films[i].LINK">
+                <div class="col-lg-4" style="min-height: 380px;">
+                    @{
+                        string url = "/Content/Images/Posters/" + films[i].Poster;
+                        <div class="poster-image" style="background-image:url(@url); clear: both; position: absolute; left: 50%; transform: translate(-50%, 0);"></div>
+                        <h3 style="clear:both; color: #fff; position: absolute; top: 310px; text-align: center; width: 100%;">@films[i].Name</h3>
+                    }
+
+                </div>
+                </a>
+                }
+</div>
+</div>
