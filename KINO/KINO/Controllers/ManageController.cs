@@ -66,6 +66,7 @@ namespace KINO.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Ваш номер телефона удален."
                 : "";
 
+            var context = ApplicationDbContext.Create();
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
@@ -75,6 +76,8 @@ namespace KINO.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
+            ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+
             return View(model);
         }
 

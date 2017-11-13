@@ -14,6 +14,8 @@ namespace KINO.Models
         public int Cost { get; set; }
         //Ключ подтверждения
         public string ValidationKey { get; set; }
+        //Дата оформления
+        public DateTime? Date { get; set; }
         // Ссылка на клиента 
         public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }

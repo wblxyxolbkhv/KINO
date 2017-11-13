@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace KINO.Models
 {
@@ -40,17 +42,13 @@ namespace KINO.Models
         {
             return new ApplicationDbContext();
         }
-    }
 
-    //public class FilmContext : DbContext
-    //{
-    //    public DbSet<Hall> Halls { get; set; }
-    //    public DbSet<Genre> Genres { get; set; }
-    //    public DbSet<Director> Directors { get; set; }
-    //    public DbSet<Country> Countries { get; set; }
-    //    public DbSet<AgeLimit> AgeLimits { get; set; }
-    //    public DbSet<Seat> Seats { get; set; }
-    //    public DbSet<Session> Sessions { get; set; }
-    //    public DbSet<Film> Films { get; set; } 
-    //}
+        public static async Task<List<UserOrdersHistory>> GetUserHistoryAsync(string userID)
+        {
+            SqlParameter param = new SqlParameter("@UserID", userID);
+            var result = await Create().Database.SqlQuery<UserOrdersHistory>("GetHistoryByUser @UserID", param).ToListAsync();
+            return result;
+        }
+    }
+    
 }

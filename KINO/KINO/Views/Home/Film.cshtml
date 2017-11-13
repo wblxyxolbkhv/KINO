@@ -24,6 +24,14 @@
                 <p>Ограничения: @ViewBag.Film.AgeLimit.Value</p>
             </div>
         </div>
+        @if (@HttpContext.Current.User.IsInRole("Admin"))
+        {
+            <hr />
+            <div class="row">
+                <p><a class="btn btn-default col-md-2" href="/Manage/SessionManage">Добавить сеанс</a></p>
+            </div>
+
+        }
         @{
             List<List<KINO.Models.Session>> sessionSortedByDate = new List<List<KINO.Models.Session>>();
             foreach (KINO.Models.Session s in ViewBag.Sessions)

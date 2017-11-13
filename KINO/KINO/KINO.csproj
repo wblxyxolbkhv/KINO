@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201711090349504_091120171349.Designer.cs">
       <DependentUpon>201711090349504_091120171349.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711131005403_13112017.cs" />
+    <Compile Include="Migrations\201711131005403_13112017.Designer.cs">
+      <DependentUpon>201711131005403_13112017.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgeLimit.cs" />
@@ -224,6 +228,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\UserOrdersHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -367,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711090349504_091120171349.resx">
       <DependentUpon>201711090349504_091120171349.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711131005403_13112017.resx">
+      <DependentUpon>201711131005403_13112017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

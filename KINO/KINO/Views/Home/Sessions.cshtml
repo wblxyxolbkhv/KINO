@@ -12,6 +12,15 @@
 <p>Дата: @ViewBag.Session.SessionTime.ToShortDateString()</p>
 <p>Время: @ViewBag.Session.SessionTime.ToShortTimeString()</p>
 
+@if (@HttpContext.Current.User.IsInRole("Admin"))
+{
+
+    <div class="row">
+        <p><a class="btn btn-default col-md-2" href="/Manage/SessionManage">Редактировать сеанс</a></p>
+    </div>
+
+}
+
 @{ 
     List<KINO.Models.Seat> seats = ViewBag.Session.Seats;
     int rowCount = (int)Math.Sqrt(ViewBag.Session.Hall.SeatsNumber / 4);
