@@ -59,6 +59,21 @@ namespace KINO.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeLoginViewModel
+    {
+        [Required]
+        [Display(Name = "Новый логин")]
+        public string NewUserName { get; set; }
+    }
+
+    public class ChangeEmailViewModel
+    {
+        [Required]
+        [Display(Name = "Новый Email")]
+        [EmailAddress]
+        public string NewEmail { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]

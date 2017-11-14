@@ -346,6 +346,8 @@
     <Content Include="Views\Home\CreateOrder.cshtml" />
     <Content Include="Views\Home\HallsSlideshow.cshtml" />
     <Content Include="Views\Home\FeaturedFilms.cshtml" />
+    <Content Include="Views\Manage\ChangeLogin.cshtml" />
+    <Content Include="Views\Manage\ChangeEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

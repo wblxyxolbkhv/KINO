@@ -46,7 +46,7 @@
     <h4>Изменение параметров учетной записи</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Пароль:</dt>
+        <dt>Пароль :</dt>
         <dd>
             [
             @if (Model.HasPassword)
@@ -72,8 +72,15 @@
              
              Uncomment the following block after you have set up two-factor authentication
         *@
-          
-        <dt>Номер телефона:</dt>
+        <dt>Имя пользователя :</dt>
+        <dd>
+           [ @Html.ActionLink("Изменить", "ChangeLogin", "Manage")]
+        </dd>
+        <dt>Email :</dt>
+        <dd>
+            [ @Html.ActionLink("Изменить", "ChangeEmail", "Manage")]
+        </dd>
+        <dt>Номер телефона :</dt>
         <dd>
             @(Model.PhoneNumber ?? "Не указан")
             @if (Model.PhoneNumber != null)

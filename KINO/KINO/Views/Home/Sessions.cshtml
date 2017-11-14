@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Session";
+    ViewBag.Title = "Сеансы";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Заказ билета</h2>
@@ -16,16 +16,18 @@
 {
 
     <div class="row">
-        <p><a class="btn btn-default col-md-2" href="/Manage/SessionManage">Редактировать сеанс</a></p>
+        <p><a class="btn btn-default" style="margin-left:10px" href="/Manage/SessionManage">Редактировать</a></p>
     </div>
 
 }
 
+<hr />
+<p style="text-align:center">Экран</p>
 @{ 
     List<KINO.Models.Seat> seats = ViewBag.Session.Seats;
     int rowCount = (int)Math.Sqrt(ViewBag.Session.Hall.SeatsNumber / 4);
     
-    <div class="seat-set">
+    <div class="seat-set" style="margin:auto;"> 
     @for (int i = 0; i< rowCount; i++)
     {
         <div class="seat-row">
@@ -57,7 +59,7 @@
         <form action="/Home/CreateOrder" method="post">
             <input type="hidden" class="session-cost" name="session-cost" value=@ViewBag.Session.Cost>
             <input type="hidden" class="session-link" name="session-link" value=@ViewBag.Session.LINK>
-            <input type="submit" class="btn btn-default make-order-button" value="Заказать">
+            <input type="submit" style="margin:auto" class="btn btn-default make-order-button" value="Заказать">
         </form>
 </div>
 }

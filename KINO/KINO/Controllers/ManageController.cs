@@ -59,6 +59,8 @@ namespace KINO.Controllers
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Ваш пароль изменен."
+                : message == ManageMessageId.ChangeLoginSuccess ? "Ваш логин изменен"
+                : message == ManageMessageId.ChangeEmailSuccess ? "Ваш Email изменен"
                 : message == ManageMessageId.SetPasswordSuccess ? "Пароль задан."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Настроен поставщик двухфакторной проверки подлинности."
                 : message == ManageMessageId.Error ? "Произошла ошибка."
@@ -250,6 +252,70 @@ namespace KINO.Controllers
             return View(model);
         }
 
+        // GET: /Manage/ChangeLogin
+        public ActionResult ChangeLogin()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/ChangeLogin
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeLogin(ChangeLoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.UserName = model.NewUserName;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeLoginSuccess });
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
+        // GET: /Manage/ChangeEmail
+        public ActionResult ChangeEmail()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/ChangeEmail
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeEmail(ChangeEmailViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.Email = model.NewEmail;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeEmailSuccess });
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
         //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
@@ -281,6 +347,7 @@ namespace KINO.Controllers
             // Это сообщение означает наличие ошибки; повторное отображение формы
             return View(model);
         }
+
 
         //
         // GET: /Manage/ManageLogins
@@ -507,6 +574,8 @@ namespace KINO.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
+            ChangeLoginSuccess,
+            ChangeEmailSuccess,
             SetTwoFactorSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,
