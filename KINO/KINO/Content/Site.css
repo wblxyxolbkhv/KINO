@@ -192,7 +192,7 @@ footer .container{
     float:left;
 }
 .poster-image-large {
-    width: 100%;
+    width: 350px;
     height: 550px;
     background-size: cover;
 }

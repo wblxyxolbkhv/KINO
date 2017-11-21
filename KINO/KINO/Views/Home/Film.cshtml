@@ -7,14 +7,14 @@
 <div class="content">
     <div class="film-container container">
         <div class="row">
-            <div class="col-lg-4" style="float: left; ">
+            <div style="float: left; margin-right: 20px;">
                 @{ 
                     string image = "/Content/Images/Posters/" + ViewBag.Film.Poster;
                     <div class="poster-image-large" style="background-image:url(@image); margin-top:25px;">
                         </div>
                  }
             </div>
-            <div class="col-lg-8" style="float: left;">
+            <div style="float: left;">
                 <h2>@ViewBag.Film.Name</h2>
                 <p>Год: @ViewBag.Film.ReleaseYear</p>
                 <p>Длительность: @ViewBag.Film.Duration</p>

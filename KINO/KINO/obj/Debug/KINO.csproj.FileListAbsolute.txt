@@ -988,3 +988,4 @@ C:\Users\Дмитрий\Desktop\KINO\KINO\KINO\obj\Debug\KINO.Migrations._131120
 D:\KINO\KINO\KINO\obj\Debug\KINO.Migrations._07112017.resources
 D:\KINO\KINO\KINO\obj\Debug\KINO.Migrations._091120171349.resources
 D:\KINO\KINO\KINO\obj\Debug\KINO.Migrations._13112017.resources
+C:\Users\anikitenko\Desktop\Projects\IWeb\KINO\KINO\KINO\obj\Debug\KINO.Migrations._13112017.resources
