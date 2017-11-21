@@ -16,10 +16,13 @@
 {
 
     <div class="row">
-        <p><a class="btn btn-default" style="margin-left:10px" href="/Manage/SessionManage">Редактировать</a></p>
+        @{ 
+            string hrefEdit = string.Format("/Manage/SessionManage?id={0}", ViewBag.Session.LINK);
+        }
+        <p><a class="btn btn-default" style="margin-left:10px" href=@hrefEdit>Редактировать</a></p>
     </div>
 
-}
+            }
 
 <hr />
 <p style="text-align:center">Экран</p>

@@ -34,7 +34,7 @@ namespace KINO.Models
     {
         public override int Compare(Session x, Session y)
         {
-            return x.SessionTime.CompareTo(y);
+            return x.SessionTime.CompareTo(y.SessionTime);
         }
     }
 }
