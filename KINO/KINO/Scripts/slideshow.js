@@ -1,6 +1,7 @@
 ﻿var slideIndex = 0;
 var slidesCount = 0;
 var timerId = 0
+// остановка и включение автопереключения слайдов при наведении мыши
 function onMouseEnter() {
     clearInterval(timerId);
     console.log("clear "+timerId)
@@ -9,6 +10,8 @@ function onMouseLeave() {
     timerId = setInterval(SlideUp, 5000);
     console.log("set " + timerId)
 }
+
+// инициализация параметров слайдшоу
 function onSlideshowInit() {
     $(".slide").each(function (index) {
         slidesCount++;
@@ -17,6 +20,8 @@ function onSlideshowInit() {
     slideshow.onmouseleave = onMouseLeave;
 }
 document.addEventListener("DOMContentLoaded", onSlideshowInit);
+
+// обновление слайдшоу, по таймеру
 function onSlideUpdate() {
     
     $(".slide").each(function (index) {
@@ -32,6 +37,9 @@ function onSlideUpdate() {
 document.addEventListener("DOMContentLoaded", onSlideUpdate);
 timerId = setInterval(SlideUp, 5000);
 console.log("set " + timerId)
+
+
+// функции для ручного переключения слайдов вперед и назад
 function SlideUp() {
     if (slideIndex + 1 >= slidesCount) {
         slideIndex = 0;
