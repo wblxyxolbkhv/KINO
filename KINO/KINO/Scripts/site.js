@@ -57,3 +57,24 @@ function onDeactivateSeat(row, number) {
     seatsIds.splice(index);
 }
 document.addEventListener("DOMContentLoaded", setSeatsClickable);
+
+
+
+
+
+function onUpButtonClick() {
+    jQuery("html, body").animate({ scrollTop: 0 }, 400);
+}
+function hideUpButtonClick() {
+    var scroll = jQuery(document).scrollTop();
+    if (scroll <= 150) {
+        jQuery(".up-button").addClass("up-button-hidden");
+        jQuery(".up-button-mobile").addClass("up-button-hidden");
+    }
+    else {
+        jQuery(".up-button").removeClass("up-button-hidden");
+        jQuery(".up-button-mobile").removeClass("up-button-hidden");
+    }
+}
+document.addEventListener("scroll", hideUpButtonClick);
+document.addEventListener("DOMContentLoaded", hideUpButtonClick);
