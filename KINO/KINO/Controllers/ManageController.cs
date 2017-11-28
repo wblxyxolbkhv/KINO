@@ -55,7 +55,7 @@ namespace KINO.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        public async Task<ActionResult> Index(ManageMessageId? message, int page = 1)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Ваш пароль изменен."
@@ -78,11 +78,43 @@ namespace KINO.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
-            ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-
+            var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+            int pageSize = 1;
+            model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
+            var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
+            //ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+            ViewBag.History = HistoryList;
             return View(model);
         }
 
+        public ActionResult Test(int page = 1)
+        {
+            PageInfo pi = new PageInfo();
+            pi.PageNumber = page;
+            return PartialView(pi);
+        }
+        // POST: /Manage/Index
+        [HttpPost]
+        public async Task<ActionResult> Index(int page = 1)
+        {
+            var context = ApplicationDbContext.Create();
+            var userId = User.Identity.GetUserId();
+            var model = new IndexViewModel
+            {
+                HasPassword = HasPassword(),
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await UserManager.GetLoginsAsync(userId),
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+            };
+            var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+            int pageSize = 1;
+            model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
+            var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
+            //ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+            ViewBag.History = HistoryList;
+            return PartialView("HistoryPartial",model.PageInfo);
+        }
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]

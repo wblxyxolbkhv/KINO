@@ -195,6 +195,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Migrations\201709181023266_MigrateDB.cs" />
     <Compile Include="Migrations\201709181023266_MigrateDB.Designer.cs">
       <DependentUpon>201709181023266_MigrateDB.cs</DependentUpon>
@@ -226,6 +227,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\UserOrdersHistory.cs" />
@@ -293,6 +295,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -348,6 +352,7 @@
     <Content Include="Views\Home\FeaturedFilms.cshtml" />
     <Content Include="Views\Manage\ChangeLogin.cshtml" />
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
+    <Content Include="Views\Manage\HistoryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
