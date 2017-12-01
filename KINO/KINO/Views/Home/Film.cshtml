@@ -34,7 +34,10 @@
         }
         @{
             List<List<KINO.Models.Session>> sessionSortedByDate = new List<List<KINO.Models.Session>>();
-            foreach (KINO.Models.Session s in ViewBag.Sessions)
+            IEnumerable<KINO.Models.Session> sessions = ViewBag.Sessions;
+            List<KINO.Models.Session> sessionsList = sessions.ToList();
+            sessionsList.Sort(new KINO.Models.SessionComparer());
+            foreach (KINO.Models.Session s in sessionsList)
             {
                 bool added = false;
                 foreach (List<KINO.Models.Session> list in sessionSortedByDate)
@@ -66,7 +69,7 @@
                             {
                                 <a href="/Home/Sessions?id=@s.LINK" class="session-link"><div class="session-button">@s.SessionTime.ToShortTimeString()<br/>Зал: @s.Hall.Name</div></a>
                             }
-                        }
+            }
                     </div>
                 }
             }
