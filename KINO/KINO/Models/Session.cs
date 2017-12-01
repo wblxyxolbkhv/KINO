@@ -29,6 +29,8 @@ namespace KINO.Models
         //Стоимость билета
         [Display(Name = "Стоимость билета")]
         public int Cost { get; set; }
+        //Флаг актуальности
+        public bool? Archived { get; set; }
     }
     public class SessionComparer : Comparer<KINO.Models.Session>
     {

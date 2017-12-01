@@ -3,9 +3,12 @@
     ViewBag.Title = "Редактирование сеансов";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />*@
+
 
 <h2>@ViewBag.Title.</h2>
-
 <div>
     @using (Html.BeginForm("SessionManage", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
@@ -17,6 +20,23 @@
                     @Html.TextBoxFor(m => m.Session.SessionTime, new { @class = "form-control" })
                 </div>
             </div>
+            @*<div class="form-group">
+                <!-- элемент input с id = datetimepicker1 -->
+                <div class="input-group" id="datetimepicker1">
+                    <input type="text" class="form-control" />
+                    <span class="input-group-addon" style="float:left;">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Инициализация виджета "Bootstrap datetimepicker" -->
+            <script>
+                $(function () {
+                    // идентификатор элемента (например: #datetimepicker1), для которого необходимо инициализировать виджет Bootstrap DateTimePicker
+                    $('#datetimepicker1').datetimepicker();
+                });
+            </script>*@
             <div class="form-group">
                 @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
@@ -48,6 +68,11 @@
                     }
                 </div>
             </div>
-    }
+    
+                }
 </div>
 
+@Scripts.Render("~/Scripts/jquery-3.2.1.js")
+@Scripts.Render("~/Scripts/moment-with-locales.js")
+@Scripts.Render("~/Scripts/bootstrap.js")
+@Scripts.Render("~/Scripts/bootstrap-datetimepicker.js")

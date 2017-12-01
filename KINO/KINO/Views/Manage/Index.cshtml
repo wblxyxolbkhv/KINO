@@ -8,44 +8,15 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 @if (@HttpContext.Current.User.IsInRole("User"))
-{
-    @*<div>
+{    @*@Html.TextBox("searchPattern")
+        <input type="submit" value="Поиск" />*@
+   <div>
         <h4>История заказов</h4>
         <hr />
         @if (ViewBag.History != null)
         {
-            <table class="table table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th>Дата и время заказа</th>
-                        <th>Дата и время сеанса</th>
-                        <th>Название фильма</th>
-                        <th>Название зала</th>
-                        <th>Стоимость заказа</th>
-                        <th>Количество билетов</th>
-                    </tr>
-                </thead>
-                @foreach (KINO.Models.UserOrdersHistory history in ViewBag.History)
-                {
-                    <tr>
-                        @foreach (var prop in history.GetType().GetProperties())
-                        {
-                            <td>@prop.GetValue(history)</td>
-                        }
-                    </tr>
-                }
-            </table>
-        }
-        else
-        {
-            <p>Здесь будет отображаться история ваших заказов.</p>
-        }
-    </div>*@
-    @*@Html.TextBox("searchPattern")
-        <input type="submit" value="Поиск" />*@
-            
-    using(Ajax.BeginForm("Index", "Manage", new AjaxOptions { UpdateTargetId = "results" }))
-    {
+            using (Ajax.BeginForm("Index", "Manage", new AjaxOptions { UpdateTargetId = "results" }))
+            {
         <div id="results">
             <table class="table table-hover table-striped">
                 <thead>
@@ -69,13 +40,25 @@
                 }
 
             </table>
-
+            @if(Model.PageInfo.TotalPages > 1)
+            {
+                <div style="display:inline-block">
+                    Страницы:
+                </div>
+            }
             <div class="btn-group">
-                @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+                @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }), true)
             </div>
         </div>
-    }
+            }
 
+
+        }
+        else
+        {
+            <p>Здесь будет отображаться история ваших заказов.</p>
+        }
+    </div>
     @Scripts.Render("~/scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using KINO.Helpers
+@{
     ViewBag.Title = "Афиша";
 }
 <h2>@ViewBag.Title</h2>
@@ -12,32 +13,44 @@
         </div>
         
     }
-    @foreach (KINO.Models.Film film in ViewBag.Films)
-    {
-        <div class="row film">
-            @{
-                string url = "/Content/Images/Posters/" + film.Poster;
-                <div class="poster-image" style="background-image:url(@url)"></div>
-                <div class="film-info col-md-6">
+            @foreach (KINO.Models.Film film in ViewBag.Films)
+            {
+                <div class="row film">
                     @{
-                        string filmName = string.Format("{0} ({1})", film.Name, film.ReleaseYear);
-                        string href = string.Format("/Home/Film?id={0}", film.LINK);
-                        <h3><a href="@href">@filmName</a></h3>
-                        <strong>Жанр: </strong><span>@film.Genre.Name</span><br />
-                        <strong>Ограничение: </strong><span>@film.AgeLimit.Value</span><br />
+                        string url = "/Content/Images/Posters/" + film.Poster;
+                        <div class="poster-image" style="background-image:url(@url)"></div>
+                        <div class="film-info col-md-6">
+                            @{
+                                string filmName = string.Format("{0} ({1})", film.Name, film.ReleaseYear);
+                                string href = string.Format("/Home/Film?id={0}", film.LINK);
+                                <h3><a href="@href">@filmName</a></h3>
+                                <strong>Жанр: </strong><span>@film.Genre.Name</span><br />
+                                <strong>Ограничение: </strong><span>@film.AgeLimit.Value</span><br />
+                            }
+                        </div>
+                                if (@HttpContext.Current.User.IsInRole("Admin"))
+                                {
+
+                                    string hrefEdit = string.Format("/Manage/FilmManage?id={0}", film.LINK);
+                                    string hrefDelete = string.Format("/Manage/ArchiveFilm?id={0}", film.LINK);
+                                    <div class="" style="float: right; margin-top: 20px; margin-right: 20px;">
+                                        <p><a class="btn btn-default" style="margin-left:10px;" href="@hrefEdit">Редактировать фильм</a></p>
+                                        <p><a class="btn btn-default" style="margin-left:10px; width: 200px;" href="@hrefDelete">Архивировать</a></p>
+                                    </div>
+                                }
                     }
                 </div>
-                        if (@HttpContext.Current.User.IsInRole("Admin"))
-                        {
-                            
-                            string hrefEdit = string.Format("/Manage/FilmManage?id={0}", film.LINK);
-                            string hrefDelete = string.Format("/Manage/DeleteFilm?id={0}", film.LINK);
-                            <div class="" style="float: right; margin-top: 20px; margin-right: 20px;">
-                                <p><a class="btn btn-default" style="margin-left:10px;" href="@hrefEdit">Редактировать фильм</a></p>
-                                <p><a class="btn btn-default" style="margin-left:10px; width: 200px;" href="@hrefDelete">Удалить фильм</a></p>
-                            </div>
-                        }
+                                }
+            @if (ViewBag.PageInfo.TotalPages > 1)
+            {
+                <div class="btn-group-sm">
+                    Страницы: @Html.PageLinks(new KINO.Models.PageInfo { PageNumber = ViewBag.PageInfo.PageNumber, PageSize = ViewBag.PageInfo.PageSize, TotalItems = ViewBag.PageInfo.TotalItems }, x => Url.Action("Affiche", new { page = x }), false)
+                </div>
+                
+                    
+                
+
             }
-        </div>
-                        }
+        
+
 </div>

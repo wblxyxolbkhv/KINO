@@ -79,7 +79,7 @@ namespace KINO.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-            int pageSize = 1;
+            int pageSize = 10;
             model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
             var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
             //ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
@@ -87,12 +87,7 @@ namespace KINO.Controllers
             return View(model);
         }
 
-        public ActionResult Test(int page = 1)
-        {
-            PageInfo pi = new PageInfo();
-            pi.PageNumber = page;
-            return PartialView(pi);
-        }
+        //
         // POST: /Manage/Index
         [HttpPost]
         public async Task<ActionResult> Index(int page = 1)
@@ -108,7 +103,7 @@ namespace KINO.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-            int pageSize = 1;
+            int pageSize = 10;
             model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
             var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
             //ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
@@ -427,18 +422,25 @@ namespace KINO.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        //
+        // GET: /Manage/FilmManage
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult FilmManage()
+        public async Task<ActionResult> FilmManage()
         {
             var context = ApplicationDbContext.Create();
             Film film = null;
             string link = Request.Params["id"];
             if (link != null)
             {
-                int l = Int32.Parse(link);
-                film = context.Films.Find(l);
+                if (!Int32.TryParse(link, out int l))
+                {
+                    return View("Error");
+                }
+                film = await context.Films.FindAsync(l);
                 if (film == null)
+                    return View("Error");
+                if (film.Archived == true)
                     return View("Error");
             }
 
@@ -451,27 +453,25 @@ namespace KINO.Controllers
             SelectList ageLimitsList = new SelectList(context.AgeLimits.ToList(), "LINK", "Value");
             ViewBag.AgeLimits = ageLimitsList;
 
-            /* SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
-             ViewBag.Films = filmsList;
-             SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
-             ViewBag.Halls = hallsList;*/
-
             FilmManageViewModel model = new FilmManageViewModel();
             model.Film = film;
             return View(model);
         }
 
+        //
+        //POST: Manage/FilmManage
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult FilmManage(FilmManageViewModel model)
+        public async Task<ActionResult> FilmManage(FilmManageViewModel model)
         {
             var context = ApplicationDbContext.Create();
 
             if (model.Film != null)
             {
-                if (!model.Film.Poster.EndsWith(".jpg"))
+                if (!model.Film.Poster.EndsWith(".jpg") || !model.Film.Poster.EndsWith(".png"))
                     model.Film.Poster = model.Film.Poster + ".jpg";
-                if (context.Films.Find(model.Film.LINK) != null)
+                
+                if (await context.Films.FindAsync(model.Film.LINK) != null)
                     context.Entry(model.Film).State = EntityState.Modified;
                 else
                     context.Entry(model.Film).State = EntityState.Added;
@@ -480,23 +480,30 @@ namespace KINO.Controllers
             // context.Entry(model.Session).State = EntityState.Added;
             if (model.UploadedFile != null)
                 model.UploadedFile.SaveAs(Server.MapPath("~/Content/Images/Posters/" + model.Film.Poster));
-            context.SaveChanges();
+            await context.SaveChangesAsync();
             return RedirectToAction("Affiche","Home");
             
         }
 
+        //
+        //GET: Manage/SessionManage
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public ActionResult SessionManage()
+        public async Task<ActionResult> SessionManage()
         {
             var context = ApplicationDbContext.Create();
             Session session = null;
             string link = Request.Params["id"];
             if (link != null)
             {
-                int l = Int32.Parse(link);
-                session = context.Sessions.Find(l);
+                if(!Int32.TryParse(link, out int l))
+                {
+                    return View("Error");
+                }
+                session = await context.Sessions.FindAsync(l);
                 if (session == null)
+                    return View("Error");
+                if (session.Archived == true)
                     return View("Error");
             }
 
@@ -511,27 +518,31 @@ namespace KINO.Controllers
             return View(model);
         }
 
+        //
+        //POST: Manage/Session/Manage
         [HttpPost]
         [Authorize(Roles ="Admin")]
-        public ActionResult SessionManage(SessionManageViewModel model)
+        public async Task<ActionResult> SessionManage(SessionManageViewModel model)
         {
             var context = ApplicationDbContext.Create();
 
             if(model.Session != null)
             {
-                if (context.Sessions.Find(model.Session.LINK) != null)
+                if (await context.Sessions.FindAsync(model.Session.LINK) != null)
                     context.Entry(model.Session).State = EntityState.Modified;
                 else
                     context.Entry(model.Session).State = EntityState.Added;
             }
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
             return RedirectToAction("Affiche", "Home");
         }
 
+        //
+        //GET: Manage/ArchiveFilm
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> DeleteFilm(int? id)
+        public async Task<ActionResult> ArchiveFilm(int? id)
         {
             var context = ApplicationDbContext.Create();
 
@@ -547,10 +558,48 @@ namespace KINO.Controllers
                 return View("Error");
             }
 
-            context.Films.Remove(film);
+            film.Archived = true;
+            context.Entry(film).State = EntityState.Modified;
+            foreach(var session in context.Sessions)
+            {
+                if(session.FilmLINK == film.LINK)
+                {
+                    session.Archived = true;
+                    context.Entry(session).State = EntityState.Modified;
+                }
+            }
             await context.SaveChangesAsync();
             return RedirectToAction("Affiche", "Home");
         }
+
+        //
+        //GET: Manage/ArchiveSession
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> ArchiveSession(int? id)
+        {
+            var context = ApplicationDbContext.Create();
+
+            if (id == null)
+            {
+                return View("Error");
+            }
+
+            Session session = await context.Sessions.FindAsync(id);
+
+            if (session == null)
+            {
+                return View("Error");
+            }
+
+            int filmID = (int)session.FilmLINK;
+
+            session.Archived = true;
+            context.Entry(session).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return RedirectToAction("Film", "Home", new { id = filmID });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

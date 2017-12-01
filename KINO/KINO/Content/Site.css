@@ -35,6 +35,7 @@ body {
 }
 .up-button-hidden{
     opacity: 0 !important;
+    cursor: default !important;
 }
 .up-button-mobile{
     display: none;

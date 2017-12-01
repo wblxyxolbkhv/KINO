@@ -29,8 +29,13 @@
                 }
             
         </table>
-
+        @if (Model.TotalPages > 1)
+        {
+            <div style="display:inline-block">
+                Страницы:
+            </div>
+        }
         <div class="btn-group">
-            @Html.PageLinks(Model, x => Url.Action("Index", new { page = x }))
+            @Html.PageLinks(Model, x => Url.Action("Index", new { page = x }), true)
         </div>
    @*</div>*@

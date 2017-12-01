@@ -16,10 +16,12 @@
 {
 
     <div class="row">
-        @{ 
+        @{
             string hrefEdit = string.Format("/Manage/SessionManage?id={0}", ViewBag.Session.LINK);
+            string hrefDelete = string.Format("/Manage/ArchiveSession?id={0}", ViewBag.Session.LINK);
         }
-        <p><a class="btn btn-default" style="margin-left:10px" href=@hrefEdit>Редактировать</a></p>
+        <p><a class="btn btn-default" style="margin-left:10px; width:150px;" href=@hrefEdit>Редактировать</a></p>
+        <p><a class="btn btn-default" style="margin-left:10px; width:150px;" href=@hrefDelete>Архивировать</a></p>
     </div>
 
             }

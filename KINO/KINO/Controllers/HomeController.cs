@@ -17,23 +17,38 @@ namespace KINO.Controllers
             IEnumerable<Hall> halls = db.Halls;
             ViewBag.Halls = halls;
 
-            IEnumerable<Film> films = db.Films;
+            IEnumerable<Film> films = db.Films.Where(x => x.Archived !=true);
             ViewBag.Films = films;
             return View();
         }
 
-        public ActionResult Affiche()
+        public ActionResult Affiche(int page = 1)
         {
 
-            IEnumerable<Film> films = db.Films;
-            foreach (Film film in films)
+            IEnumerable<Film> films = db.Films.Where(x => x.Archived != true);
+
+            foreach (Film film in films.ToArray())
             {
                 film.Genre = db.Genres.FirstOrDefault(genre => genre.LINK == film.GenreLINK);
                 film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
             }
-            ViewBag.Films = films;
+
+            int pageSize = 1;
+
+            if (page > (int)Math.Ceiling((decimal)films.Count() / pageSize))
+            {
+                page = 1;
+            }
+            
+            PageInfo pi = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = films.Count() };
+            var filmList = films.Skip((page - 1) * pageSize).Take(pageSize);
+            ViewBag.Films = filmList;
+            ViewBag.PageInfo = pi;
+
             return View();
+            
         }
+
         public ActionResult Film(int id)
         {
             Film film = db.Films.FirstOrDefault(f => f.LINK == id);
@@ -41,7 +56,7 @@ namespace KINO.Controllers
             film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
             film.Director = db.Directors.FirstOrDefault(director => director.LINK == film.DirectorLINK);
             film.Country = db.Countries.FirstOrDefault(country => country.LINK == film.CountryLINK);
-            IEnumerable<Session> sessions = db.Sessions.Where(s => s.FilmLINK == film.LINK);
+            IEnumerable<Session> sessions = db.Sessions.Where(s => s.FilmLINK == film.LINK && s.Archived != true);
             foreach (Session session in sessions)
             {
                 session.Hall = db.Halls.FirstOrDefault(h => h.LINK == session.HallLINK);

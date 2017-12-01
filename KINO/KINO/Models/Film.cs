@@ -39,6 +39,8 @@ namespace KINO.Models
         public AgeLimit AgeLimit { get; set; }
         [Display(Name = "Возрастное ограничение")]
         public int? AgeLimitLINK { get; set; }
+        //Флаг актуальности
+        public bool? Archived { get; set; }
 
     }
 }
