@@ -12,22 +12,26 @@ namespace KINO.Models
         [Key]
         public int LINK { get; set; }
         //Фильм 
-        public Film Film { get; set; }
+        public virtual Film Film { get; set; }
         [Display(Name = "Фильм")]
+        [Required]
         public int? FilmLINK { get; set; }
         //Время
         [Display(Name = "Дата и время")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
+        [Required]
         public DateTime SessionTime { get; set; }
         //Зал
-        public Hall Hall { get; set; }
+        public virtual Hall Hall { get; set; }
         [Display(Name = "Зал")]
+        [Required]
         public int? HallLINK { get; set; }
 
         public IEnumerable<Seat> Seats { get; set; }
 
         //Стоимость билета
         [Display(Name = "Стоимость билета")]
+        [Required]
         public int Cost { get; set; }
         //Флаг актуальности
         public bool? Archived { get; set; }

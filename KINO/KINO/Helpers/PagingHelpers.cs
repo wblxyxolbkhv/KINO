@@ -64,7 +64,7 @@ namespace KINO.Helpers
                 {
                     TagBuilder spanTag = new TagBuilder("span");
                     spanTag.SetInnerText(" ... ");
-                    spanTag.MergeAttribute("style", "font-weight:bold; font-size:20px;");
+                    spanTag.MergeAttribute("style", "font-weight:bold; font-size:17px;");
                     //spanTag.MergeAttribute("onclick", String.Format("expandPages(this,{0}", pageUrl(pageInfo.PageNumber)));
 
                     links.Insert(index - 2, spanTag);
@@ -80,7 +80,7 @@ namespace KINO.Helpers
                 {
                     TagBuilder spanTag = new TagBuilder("span");
                     spanTag.SetInnerText(" ... ");
-                    spanTag.MergeAttribute("style", "font-weight:bold; font-size:20px;");
+                    spanTag.MergeAttribute("style", "font-weight:bold; font-size:17px;");
                     //spanTag.MergeAttribute("onclick", String.Format("expandPages(this,{0}", pageUrl(pageInfo.PageNumber)));
 
                     links.Insert(index + 2, spanTag);

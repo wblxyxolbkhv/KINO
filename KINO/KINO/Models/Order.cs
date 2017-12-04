@@ -17,7 +17,7 @@ namespace KINO.Models
         //Дата оформления
         public DateTime? Date { get; set; }
         // Ссылка на клиента 
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }
     }
 }

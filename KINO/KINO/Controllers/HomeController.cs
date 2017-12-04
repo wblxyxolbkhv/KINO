@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using KINO.Models;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace KINO.Controllers
 {
@@ -25,13 +26,13 @@ namespace KINO.Controllers
         public ActionResult Affiche(int page = 1)
         {
 
-            IEnumerable<Film> films = db.Films.Where(x => x.Archived != true);
+            IEnumerable<Film> films = db.Films/*.Include(x => x.Genre).Include(x => x.AgeLimit)*/.Where(x => x.Archived != true);
 
-            foreach (Film film in films.ToArray())
+            /*foreach (Film film in films.ToArray())
             {
                 film.Genre = db.Genres.FirstOrDefault(genre => genre.LINK == film.GenreLINK);
                 film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
-            }
+            }*/
 
             int pageSize = 1;
 
@@ -49,8 +50,13 @@ namespace KINO.Controllers
             
         }
 
-        public ActionResult Film(int id)
+        public ActionResult Film(int? id)
         {
+            if(id == null)
+            {
+                return View("Error");
+            }
+
             Film film = db.Films.FirstOrDefault(f => f.LINK == id);
             film.Genre = db.Genres.FirstOrDefault(genre => genre.LINK == film.GenreLINK);
             film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
@@ -83,7 +89,7 @@ namespace KINO.Controllers
         {
             try
             {
-                Session session = db.Sessions.FirstOrDefault(s => s.LINK == id);
+                Session session = db.Sessions.FirstOrDefault(s => s.LINK == id && s.Archived != true);
                 if (session == null) { throw new KeyNotFoundException(); }
                 IEnumerable<Seat> seats = db.Seats.Where(s => s.SessionLINK == session.LINK);
                 session.Seats = seats.ToList();

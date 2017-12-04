@@ -46,7 +46,8 @@ namespace KINO.Models
         public static async Task<List<UserOrdersHistory>> GetUserHistoryAsync(string userID)
         {
             SqlParameter param = new SqlParameter("@UserID", userID);
-            var result = await Create().Database.SqlQuery<UserOrdersHistory>("GetHistoryByUser @UserID", param).ToListAsync();
+            var result = await Create().Database.SqlQuery<UserOrdersHistory>
+                ("GetHistoryByUser @UserID", param).ToListAsync();
             return result;
         }
     }
