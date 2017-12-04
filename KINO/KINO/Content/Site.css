@@ -11,9 +11,9 @@ html{
 body {
     padding-top: 50px;
     /*padding-bottom: 20px;*/
-    font-family: "NEXTART", Arial !important;
-    background: #161a23 !important;
-    color: #fff !important;
+    font-family: "NEXTART", Arial;
+    background: #161a23;
+    color: #fff;
     min-height: 100vh;
 }
 
@@ -301,19 +301,4 @@ footer .container{
 .make-order-button{
     display: block;
     clear: both;
-}
-#datetimepicker1{
-    color: #000;
-}
-.input-group-addon{
-    width: initial;
-}
-#datetimepicker1 > .form-control {
-    min-width: 240px;
-}
-
-@media (max-width: 350px){
-    #datetimepicker1 > .form-control {
-        min-width: initial;
-    }
 }
