@@ -526,9 +526,13 @@ namespace KINO.Controllers
         {
             var context = ApplicationDbContext.Create();
 
+            string dateString = Request.Params["date_field"];
+            DateTime date = DateTime.Parse(dateString);
+            model.Session.SessionTime = date;
+
             if(model.Session != null)
             {
-                if (await context.Sessions.FindAsync(model.Session.LINK) != null)
+                if (context.Sessions.Find(model.Session.LINK) != null)
                     context.Entry(model.Session).State = EntityState.Modified;
                 else
                     context.Entry(model.Session).State = EntityState.Added;
