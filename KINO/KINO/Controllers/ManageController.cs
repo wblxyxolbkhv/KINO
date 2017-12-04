@@ -555,7 +555,11 @@ namespace KINO.Controllers
         public async Task<ActionResult> SessionManage(SessionManageViewModel model)
         {
             var context = ApplicationDbContext.Create();
-           
+
+            string dateString = Request.Params["date_field"];
+            DateTime date = DateTime.Parse(dateString);
+            model.Session.SessionTime = date;
+
             if (ModelState.IsValid)
             {
                 var session = await context.Sessions.FindAsync(model.Session.LINK);

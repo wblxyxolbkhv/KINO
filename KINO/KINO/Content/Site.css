@@ -302,3 +302,21 @@ footer .container{
     display: block;
     clear: both;
 }
+#datetimepicker1 {
+    color: #000;
+}
+
+.input-group-addon {
+    width: initial;
+    max-height: 34px;
+}
+
+#datetimepicker1 > .form-control {
+    min-width: 240px;
+}
+
+@media (max-width: 350px) {
+    #datetimepicker1 > .form-control {
+        min-width: initial;
+    }
+}
