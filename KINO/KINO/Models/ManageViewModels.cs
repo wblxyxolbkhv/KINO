@@ -114,4 +114,6 @@ namespace KINO.Models
     {
         public Session Session { get; set; }
     }
+    
+   
 }

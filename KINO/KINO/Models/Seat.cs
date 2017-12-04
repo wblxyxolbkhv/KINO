@@ -17,10 +17,10 @@ namespace KINO.Models
         //Статус брони
         public bool IsBooked { get; set; }
         //Ссылка на заказ
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
         public int? OrderLINK { get; set; }
         // Сеанс
-        public Session Session { get; set; }
+        public virtual Session Session { get; set; }
         public int? SessionLINK { get; set; }
     }
 }

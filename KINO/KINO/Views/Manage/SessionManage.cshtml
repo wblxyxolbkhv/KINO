@@ -14,6 +14,26 @@
     {
         <h4>Добавление сеанса.</h4>
         <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        if (Model.Session == null || Model.Session.FilmLINK == null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Session.FilmLINK, ViewBag.Films as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10" style="margin-top: 8px">
+                    @Html.DisplayFor(m => m.Session.Film.Name, new { @class = "form-control" })
+                    @Html.HiddenFor(m => m.Session.FilmLINK)
+                </div>
+            </div>
+        } 
             <div class="form-group">
                 @Html.LabelFor(m => m.Session.SessionTime, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
@@ -37,12 +57,7 @@
                     $('#datetimepicker1').datetimepicker();
                 });
             </script>*@
-            <div class="form-group">
-                @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.Session.FilmLINK, ViewBag.Films as SelectList, new { @class = "form-control" })
-                </div>
-            </div>
+    
             <div class="form-group">
                 @Html.LabelFor(m => m.Session.HallLINK, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
@@ -55,7 +70,7 @@
                     @Html.TextBoxFor(m => m.Session.Cost, new { @class = "form-control" })
                 </div>
             </div>
-
+            @Html.HiddenFor(m => m.Session.LINK)
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     @if (Model.Session == null)

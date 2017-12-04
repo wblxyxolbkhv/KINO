@@ -79,10 +79,10 @@ namespace KINO.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-            int pageSize = 10;
+            int pageSize = 1;
             model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
             var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
-            //ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+
             ViewBag.History = HistoryList;
             return View(model);
         }
@@ -90,7 +90,7 @@ namespace KINO.Controllers
         //
         // POST: /Manage/Index
         [HttpPost]
-        public async Task<ActionResult> Index(int page = 1)
+        public async Task<ActionResult> Index(string search = "", int page = 1)
         {
             var context = ApplicationDbContext.Create();
             var userId = User.Identity.GetUserId();
@@ -103,10 +103,17 @@ namespace KINO.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-            int pageSize = 10;
+            History = History.Where(x => x.Cost.ToString().Contains(search)
+            || x.FilmName.ToString().Contains(search)
+            || x.HallName.ToString().Contains(search)
+            || x.OrderDate.ToString().Contains(search)
+            || x.SeatAmount.ToString().Contains(search)
+            || x.SessionDate.ToString().Contains(search)).ToList();
+
+            int pageSize = 1;
             model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
             var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
-            //ViewBag.History = await ApplicationDbContext.GetUserHistoryAsync(userId);
+            
             ViewBag.History = HistoryList;
             return PartialView("HistoryPartial",model.PageInfo);
         }
@@ -465,21 +472,43 @@ namespace KINO.Controllers
         public async Task<ActionResult> FilmManage(FilmManageViewModel model)
         {
             var context = ApplicationDbContext.Create();
-
-            if (model.Film != null)
+            
+            if (ModelState.IsValid)
             {
-                if (!model.Film.Poster.EndsWith(".jpg") || !model.Film.Poster.EndsWith(".png"))
+                if (!model.Film.Poster.EndsWith(".jpg"))
                     model.Film.Poster = model.Film.Poster + ".jpg";
-                
-                if (await context.Films.FindAsync(model.Film.LINK) != null)
-                    context.Entry(model.Film).State = EntityState.Modified;
+
+                var film = await context.Films.FindAsync(model.Film.LINK);
+                if (film != null)
+                {
+                    foreach (var prop in film.GetType().GetProperties())
+                    {
+                        prop.SetValue(film, model.Film.GetType().GetProperty(prop.Name).GetValue(model.Film));
+                    }
+                    context.Entry(film).State = EntityState.Modified;
+                }
                 else
-                    context.Entry(model.Film).State = EntityState.Added;
+                {
+                    context.Entry(model.Session).State = EntityState.Added;
+                }
             }
-            //if (model.Session != null)
-            // context.Entry(model.Session).State = EntityState.Added;
-            if (model.UploadedFile != null)
+            else
+            {
+                SelectList genresList = new SelectList(context.Genres.ToList(), "LINK", "Name");
+                ViewBag.Genres = genresList;
+                SelectList directorsList = new SelectList(context.Directors.ToList(), "LINK", "Name");
+                ViewBag.Directors = directorsList;
+                SelectList countriesList = new SelectList(context.Countries.ToList(), "LINK", "Name");
+                ViewBag.Countries = countriesList;
+                SelectList ageLimitsList = new SelectList(context.AgeLimits.ToList(), "LINK", "Value");
+                ViewBag.AgeLimits = ageLimitsList;
+                return View(model);
+            }
+            
+            if (model.UploadedFile != null 
+                && (model.UploadedFile.FileName.EndsWith(".jpg")))
                 model.UploadedFile.SaveAs(Server.MapPath("~/Content/Images/Posters/" + model.Film.Poster));
+           
             await context.SaveChangesAsync();
             return RedirectToAction("Affiche","Home");
             
@@ -505,13 +534,14 @@ namespace KINO.Controllers
                     return View("Error");
                 if (session.Archived == true)
                     return View("Error");
+                session.Film = await context.Films.FindAsync(session.FilmLINK);
             }
 
-            SelectList filmsList = new SelectList(context.Films.ToList(), "LINK", "Name");
+            SelectList filmsList = new SelectList(context.Films.Where(x => x.Archived != true).ToList(), "LINK", "Name");
             ViewBag.Films = filmsList;
             SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
             ViewBag.Halls = hallsList;
-
+            
             SessionManageViewModel model = new SessionManageViewModel();
             model.Session = session;
 
@@ -525,13 +555,32 @@ namespace KINO.Controllers
         public async Task<ActionResult> SessionManage(SessionManageViewModel model)
         {
             var context = ApplicationDbContext.Create();
-
-            if(model.Session != null)
+           
+            if (ModelState.IsValid)
             {
-                if (await context.Sessions.FindAsync(model.Session.LINK) != null)
-                    context.Entry(model.Session).State = EntityState.Modified;
+                var session = await context.Sessions.FindAsync(model.Session.LINK);
+                if (session != null)
+                {
+                    foreach(var prop in session.GetType().GetProperties())
+                    {
+                        prop.SetValue(session, model.Session.GetType().GetProperty(prop.Name).GetValue(model.Session));
+                    }
+                    context.Entry(session).State = EntityState.Modified;
+                }
                 else
+                {
                     context.Entry(model.Session).State = EntityState.Added;
+                }
+            }
+            else
+            {
+                SelectList filmsList = new SelectList(context.Films.Where(x => x.Archived != true).ToList(), "LINK", "Name");
+                ViewBag.Films = filmsList;
+                SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
+                ViewBag.Halls = hallsList;
+                if(model.Session.FilmLINK != null)
+                model.Session.Film = await context.Films.FindAsync(model.Session.FilmLINK);
+                return View(model);
             }
             await context.SaveChangesAsync();
 
@@ -598,6 +647,21 @@ namespace KINO.Controllers
             context.Entry(session).State = EntityState.Modified;
             await context.SaveChangesAsync();
             return RedirectToAction("Film", "Home", new { id = filmID });
+        }
+
+        //
+        //GET: Manage/RefBookManage
+        public ActionResult RefBookManage()
+        {
+            var context = ApplicationDbContext.Create();
+
+            ViewBag.Genres = context.Genres;
+           
+            ViewBag.AgeLimits = context.AgeLimits;
+            ViewBag.Directors = context.Directors;
+            ViewBag.Halls = context.Halls;
+            ViewBag.Countries = context.Countries;
+            return View();
         }
 
         protected override void Dispose(bool disposing)

@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,6 +220,10 @@
     <Compile Include="Migrations\201711300741090_30112017.cs" />
     <Compile Include="Migrations\201711300741090_30112017.Designer.cs">
       <DependentUpon>201711300741090_30112017.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712020049598_021220017.cs" />
+    <Compile Include="Migrations\201712020049598_021220017.Designer.cs">
+      <DependentUpon>201712020049598_021220017.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -456,6 +461,9 @@
     <Content Include="Views\Manage\ChangeLogin.cshtml" />
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
     <Content Include="Views\Manage\HistoryPartial.cshtml" />
+    <Content Include="Views\Manage\RefBookManage.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -478,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711300741090_30112017.resx">
       <DependentUpon>201711300741090_30112017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712020049598_021220017.resx">
+      <DependentUpon>201712020049598_021220017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

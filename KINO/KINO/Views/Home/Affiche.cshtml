@@ -43,7 +43,7 @@
                                 }
             @if (ViewBag.PageInfo.TotalPages > 1)
             {
-                <div class="btn-group-sm">
+                <div class="btn-group-sm pagination" style="">
                     Страницы: @Html.PageLinks(new KINO.Models.PageInfo { PageNumber = ViewBag.PageInfo.PageNumber, PageSize = ViewBag.PageInfo.PageSize, TotalItems = ViewBag.PageInfo.TotalItems }, x => Url.Action("Affiche", new { page = x }), false)
                 </div>
                 
