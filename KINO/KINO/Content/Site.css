@@ -32,7 +32,6 @@ body {
     cursor: pointer;
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
-    z-index: 10001;
 }
 .up-button-hidden{
     opacity: 0 !important;
@@ -302,4 +301,25 @@ footer .container{
 .make-order-button{
     display: block;
     clear: both;
+}
+#datetimepicker1 {
+    color: #000;
+}
+
+.input-group-addon {
+    width: initial;
+    max-height: 34px;
+}
+
+#datetimepicker1 > .form-control {
+    min-width: 240px;
+}
+
+@media (max-width: 350px) {
+    #datetimepicker1 > .form-control {
+        min-width: initial;
+    }
+}
+input[type="text"]{
+    color: #000;
 }
