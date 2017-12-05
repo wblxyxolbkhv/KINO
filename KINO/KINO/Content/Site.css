@@ -320,3 +320,6 @@ footer .container{
         min-width: initial;
     }
 }
+input[type="text"]{
+    color: #000;
+}

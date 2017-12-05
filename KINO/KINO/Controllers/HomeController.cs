@@ -34,7 +34,7 @@ namespace KINO.Controllers
                 film.AgeLimit = db.AgeLimits.FirstOrDefault(ageLimit => ageLimit.LINK == film.AgeLimitLINK);
             }*/
 
-            int pageSize = 1;
+            int pageSize = 3;
 
             if (page > (int)Math.Ceiling((decimal)films.Count() / pageSize))
             {

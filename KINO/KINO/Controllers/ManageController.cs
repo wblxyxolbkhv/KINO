@@ -79,7 +79,7 @@ namespace KINO.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-            int pageSize = 1;
+            int pageSize = 10;
             model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
             var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
 
@@ -103,14 +103,14 @@ namespace KINO.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
             };
             var History = await ApplicationDbContext.GetUserHistoryAsync(userId);
-            History = History.Where(x => x.Cost.ToString().Contains(search)
-            || x.FilmName.ToString().Contains(search)
-            || x.HallName.ToString().Contains(search)
-            || x.OrderDate.ToString().Contains(search)
-            || x.SeatAmount.ToString().Contains(search)
-            || x.SessionDate.ToString().Contains(search)).ToList();
+            History = History.Where(x => x.Cost.ToString().Contains(search.ToLowerInvariant())
+            || x.FilmName.ToString().ToLowerInvariant().Contains(search.ToLowerInvariant())
+            || x.HallName.ToString().ToLowerInvariant().Contains(search.ToLowerInvariant())
+            || x.OrderDate.ToString().ToLowerInvariant().Contains(search.ToLowerInvariant())
+            || x.SeatAmount.ToString().ToLowerInvariant().Contains(search.ToLowerInvariant())
+            || x.SessionDate.ToString().ToLowerInvariant().Contains(search.ToLowerInvariant())).ToList();
 
-            int pageSize = 1;
+            int pageSize = 10;
             model.PageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = History.Count };
             var HistoryList = History.Skip((page - 1) * pageSize).Take(pageSize);
             
@@ -489,7 +489,8 @@ namespace KINO.Controllers
                 }
                 else
                 {
-                    context.Entry(model.Session).State = EntityState.Added;
+
+                    context.Entry(model.Film).State = EntityState.Added;
                 }
             }
             else
@@ -522,6 +523,11 @@ namespace KINO.Controllers
         {
             var context = ApplicationDbContext.Create();
             Session session = null;
+            int film;
+            if (int.TryParse(Request.Params["film"], out film)){
+                ViewBag.film = film;
+                ViewBag.FilmName = context.Films.Find(film).Name;
+            }
             string link = Request.Params["id"];
             if (link != null)
             {
