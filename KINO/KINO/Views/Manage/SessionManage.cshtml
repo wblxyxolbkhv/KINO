@@ -15,39 +15,17 @@
         <h4>Добавление сеанса.</h4>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
-        if (Model.Session == null)
+        if (Model.Session == null || Model.Session.FilmLINK == null)
         {
-            if (ViewBag.film != null)
-            {
-                <div class="form-group">
+            <div class="form-group">
                 @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10" style="margin-top: 8px">
-                    @*Html.DisplayFor(m => m.Session.Film.Name, new { @class = "form-control" })*@
-                    @{
-                        string filmName = ViewBag.FilmName.ToString();
-                        int film = ViewBag.film;
-                    }
-                    @filmName
-                    @Html.HiddenFor(m => m.Session.FilmLINK, new { })
-                    <script>
-                        $("#Session_FilmLINK").attr("value", @film);
-                    </script>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Session.FilmLINK, ViewBag.Films as SelectList, new { @class = "form-control" })
                 </div>
             </div>
-             }
-                        else
-                        {
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(m => m.Session.FilmLINK, ViewBag.Films as SelectList, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            }
-
-                        }
-                        else
-                        {
+        }
+        else
+        {
             <div class="form-group">
                 @Html.LabelFor(m => m.Session.FilmLINK, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10" style="margin-top: 8px">
@@ -55,40 +33,31 @@
                     @Html.HiddenFor(m => m.Session.FilmLINK)
                 </div>
             </div>
-
-        }
-
-        <div class="form-group">
-
-            @Html.LabelFor(m => m.Session.SessionTime, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+        } 
+            <div class="form-group">
+                @Html.LabelFor(m => m.Session.SessionTime, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Session.SessionTime, new { @class = "form-control" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                <!-- элемент input с id = datetimepicker1 -->
                 <div class="input-group" id="datetimepicker1">
-                    <input type="text" class="form-control" name="date_field" />
-                    <span class="input-group-addon">
+                    <input type="text" class="form-control" />
+                    <span class="input-group-addon" style="float:left;">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
             </div>
-        </div>
 
+            <!-- Инициализация виджета "Bootstrap datetimepicker" -->
             <script>
                 $(function () {
-                    $('#datetimepicker1').datetimepicker({
-                        locale: 'ru'
-
-                    });
-                    @{ 
-                        string dateString = "";
-                    }
-                    @if (Model.Session != null) {
-                        dateString = Model.Session.SessionTime.ToShortDateString() + " " + Model.Session.SessionTime.ToShortTimeString();
-                    }
-                    else {
-                        dateString = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
-                    }
-                    $('#datetimepicker1').data("DateTimePicker").date('@dateString');
+                    // идентификатор элемента (например: #datetimepicker1), для которого необходимо инициализировать виджет Bootstrap DateTimePicker
+                    $('#datetimepicker1').datetimepicker();
                 });
-            </script>
+            </script>*@
+    
             <div class="form-group">
                 @Html.LabelFor(m => m.Session.HallLINK, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
@@ -101,10 +70,7 @@
                     @Html.TextBoxFor(m => m.Session.Cost, new { @class = "form-control" })
                 </div>
             </div>
-                        if (Model.Session != null)
-                        {
-                            Html.HiddenFor(m => m.Session.LINK);
-                        }
+            @Html.HiddenFor(m => m.Session.LINK)
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     @if (Model.Session == null)

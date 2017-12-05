@@ -70,10 +70,7 @@
                 @Html.TextBoxFor(m => m.UploadedFile, new { type = "file", onchange = "SetNewEntry(this.files);" })
             </div>
         </div>
-                @if (Model.Film != null)
-                {
-                    Html.HiddenFor(m => m.Film.LINK);
-                }
+                @Html.HiddenFor(m => m.Film.LINK)
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
                 @if (Model.Film == null)
