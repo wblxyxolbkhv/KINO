@@ -563,18 +563,18 @@ namespace KINO.Controllers
             var context = ApplicationDbContext.Create();
 
             string dateString = Request.Params["date_field"];
-            DateTime date = DateTime.Parse(dateString);
-            model.Session.SessionTime = date;
-
-            if (ModelState.IsValid)
+            bool isDateValid = DateTime.TryParse(dateString, out DateTime date);
+            if (ModelState.IsValid && isDateValid)
             {
+                model.Session.SessionTime = date;
                 var session = await context.Sessions.FindAsync(model.Session.LINK);
                 if (session != null)
                 {
-                    foreach(var prop in session.GetType().GetProperties())
+                    foreach (var prop in session.GetType().GetProperties())
                     {
                         prop.SetValue(session, model.Session.GetType().GetProperty(prop.Name).GetValue(model.Session));
                     }
+
                     context.Entry(session).State = EntityState.Modified;
                 }
                 else
@@ -584,12 +584,17 @@ namespace KINO.Controllers
             }
             else
             {
+                if (!isDateValid)
+                {
+                    model.Session.SessionTime = DateTime.Now;
+                }
+                else model.Session.SessionTime = date;
                 SelectList filmsList = new SelectList(context.Films.Where(x => x.Archived != true).ToList(), "LINK", "Name");
                 ViewBag.Films = filmsList;
                 SelectList hallsList = new SelectList(context.Halls.ToList(), "LINK", "Name");
                 ViewBag.Halls = hallsList;
-                if(model.Session.FilmLINK != null)
-                model.Session.Film = await context.Films.FindAsync(model.Session.FilmLINK);
+                if (model.Session.FilmLINK != null)
+                    model.Session.Film = await context.Films.FindAsync(model.Session.FilmLINK);
                 return View(model);
             }
             await context.SaveChangesAsync();
@@ -617,7 +622,20 @@ namespace KINO.Controllers
                 return View("Error");
             }
 
-            film.Archived = true;
+            var sessions = context.Sessions.Where(x => x.FilmLINK == film.LINK);
+            if (sessions == null)
+                film.Archived = true;
+            else
+            {
+                foreach(var s in sessions)
+                {
+                    if(s.SessionTime > DateTime.Now)
+                    {
+                        return View("Error");
+                    }
+                }
+            }
+            
             context.Entry(film).State = EntityState.Modified;
             foreach(var session in context.Sessions)
             {
@@ -651,7 +669,13 @@ namespace KINO.Controllers
                 return View("Error");
             }
 
+            
             int filmID = (int)session.FilmLINK;
+
+            if(session.SessionTime > DateTime.Now)
+            {
+                return View("Error");
+            }
 
             session.Archived = true;
             context.Entry(session).State = EntityState.Modified;

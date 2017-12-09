@@ -56,7 +56,7 @@ namespace KINO.Helpers
                     links.Add(tag);
                 }
                 int index = links.IndexOf(links.Find(x => x.InnerHtml == pageInfo.PageNumber.ToString()));
-                for(int i = 1; i < index-1; i++)
+                for(int i = index -2 ; i > 0; i--)
                 {
                     links.Remove(links[i]);
                 }
@@ -66,17 +66,18 @@ namespace KINO.Helpers
                     spanTag.SetInnerText(" ... ");
                     spanTag.MergeAttribute("style", "font-weight:bold; font-size:17px;");
                     //spanTag.MergeAttribute("onclick", String.Format("expandPages(this,{0}", pageUrl(pageInfo.PageNumber)));
-
-                    links.Insert(index - 2, spanTag);
+                    index = links.IndexOf(links.Find(x => x.InnerHtml == pageInfo.PageNumber.ToString()));
+                    links.Insert(index - 1, spanTag);
                 }
                 index = links.IndexOf(links.Find(x => x.InnerHtml == pageInfo.PageNumber.ToString()));
-                for(int i = index + 2; i< links.Count-1; i++)
+                var ind = links.Count - 2;
+                for(int i = ind; i> index +1; i--)
                 {
-                    if (index + 2 == links.Count)
+                    if (index + 1 == links.Count)
                         break;
                     links.Remove(links[i]);
                 }
-                if (index != -1 && index + 2 < Convert.ToInt32(links.Last().InnerHtml) - 1)
+                if (index != -1 && index + 2 < Convert.ToInt32(links.Last().InnerHtml) - 1 &&  Convert.ToInt32(links[index].InnerHtml) < Convert.ToInt32(links.Last().InnerHtml) -2)
                 {
                     TagBuilder spanTag = new TagBuilder("span");
                     spanTag.SetInnerText(" ... ");
